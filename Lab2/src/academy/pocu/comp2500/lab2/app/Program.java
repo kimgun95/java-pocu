@@ -45,16 +45,19 @@ public class Program {
         assert Math.abs(sum.real - 12.5) < DOUBLE_EPSILON;
         assert Math.abs(sum.imaginary - (-5.1)) < DOUBLE_EPSILON;
 
+//        subtract 함수가 제대로 동작하는지 확인
         ComplexNumber diff = num4.subtract(num3);
 
         assert Math.abs(diff.real - (-2.5)) < DOUBLE_EPSILON;
         assert Math.abs(diff.imaginary - 5.1012) < DOUBLE_EPSILON;
 
+//        multiply 함수가 제대로 동작하는지 확인
         ComplexNumber product = num3.multiply(num4);
 
         assert Math.abs(product.real - 0.00612) < DOUBLE_EPSILON;
         assert Math.abs(product.imaginary - 0.003) < DOUBLE_EPSILON;
 
+//        divide 함수가 제대로 동작하는지 확인
         ComplexNumber quotient = num4.divide(num3);
 
         assert Math.abs(quotient.real - (-1.89709E-4)) < DOUBLE_EPSILON;
