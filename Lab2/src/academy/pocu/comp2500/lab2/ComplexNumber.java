@@ -39,9 +39,9 @@ public class ComplexNumber {
     public ComplexNumber divide(ComplexNumber num) {
         ComplexNumber quotientNumber = new ComplexNumber();
         ComplexNumber numConjugate = num.getConjugate();
-
-        quotientNumber.real = (this.real * numConjugate.real - this.imaginary * numConjugate.imaginary) / (Math.pow(num.real, 2) + Math.pow(num.imaginary , 2));
-        quotientNumber.imaginary = (this.real * numConjugate.imaginary + this.imaginary * numConjugate.real) / (Math.pow(num.real, 2) + Math.pow(num.imaginary , 2));
+        double dividingValue = Math.pow(num.real, 2) + Math.pow(num.imaginary , 2);
+        quotientNumber.real = (this.real * numConjugate.real - this.imaginary * numConjugate.imaginary) / (dividingValue);
+        quotientNumber.imaginary = (this.real * numConjugate.imaginary + this.imaginary * numConjugate.real) / (dividingValue);
         return quotientNumber;
     }
 }
