@@ -2,9 +2,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person();
-        person.name = "Chris";
-        System.out.println(person.name);
-//        person.beAwesome();
+        Person adam = new Person("Adam", 20);
+        Person harry = new Person("Harry", 20);
     }
 }

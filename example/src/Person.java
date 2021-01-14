@@ -1,9 +1,16 @@
 public class Person {
-    public int age;
-    String name;
+    private int age;
+    private String name;
 
-    public void beAwesome() {
-        this.name = "James";
-        System.out.println(this.name);
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = Math.max(0, age);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }
