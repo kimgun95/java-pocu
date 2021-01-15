@@ -9,6 +9,6 @@ public class Classroom {
         return true;
     }
     private void updateMean() {
-        this.mean = 평균 계산;
+
     }
 }
