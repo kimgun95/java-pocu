@@ -16,9 +16,9 @@ public class FlowerPot {
         SprayBottle body = spray.getBody();
 
         int water = body.getRemainingWater();
-        head.spray();
+        head.sprayFrom(body);
         water -= body.getRemainingWater();
-        dailyWaterReceived += amountInMl;
+        dailyWaterReceived += water;
     }
     public void liveAnotherDay() {
         if (dailyWaterReceived < minDailyWaterInMl) {
