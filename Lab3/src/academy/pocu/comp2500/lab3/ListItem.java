@@ -41,7 +41,7 @@ public class ListItem {
     public void removeSublistItem(int index) {
         this.sublistItems.remove(index);
     }
-    private void confirmSublist (StringBuilder sb, ArrayList<ListItem> sublistItems, int level) {
+    private void confirmSublist(StringBuilder sb, ArrayList<ListItem> sublistItems, int level) {
         for (ListItem sublistItem : sublistItems) {
             sb.append(" ".repeat(Math.max(0, level)));
             sb.append(String.format("%c %s%s", sublistItem.bulletStyle, sublistItem.text, System.lineSeparator()));
