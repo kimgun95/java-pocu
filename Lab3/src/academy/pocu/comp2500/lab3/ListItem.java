@@ -6,7 +6,6 @@ public class ListItem {
     private String text;
     private char bulletStyle;
     private ArrayList<ListItem> sublistItems = new ArrayList<>();
-    StringBuilder sb = new StringBuilder();
 
     public ListItem(String text) {
         this(text, '*');
@@ -31,8 +30,9 @@ public class ListItem {
         this.sublistItems.add(sublistItem);
     }
     public String toString() {
+        StringBuilder sb = new StringBuilder();
         sb.append(String.format("%c %s%s", this.bulletStyle, this.text, System.lineSeparator()));
-        confirmSublist(this.sublistItems, 4);
+        confirmSublist(sb, this.sublistItems, 4);
         return sb.toString();
     }
     public void setBulletStyle(char bulletStyle) {
@@ -41,12 +41,12 @@ public class ListItem {
     public void removeSublistItem(int index) {
         this.sublistItems.remove(index);
     }
-    public void confirmSublist (ArrayList<ListItem> sublistItems, int level) {
+    private void confirmSublist (StringBuilder sb, ArrayList<ListItem> sublistItems, int level) {
         for (ListItem sublistItem : sublistItems) {
             sb.append(" ".repeat(Math.max(0, level)));
             sb.append(String.format("%c %s%s", sublistItem.bulletStyle, sublistItem.text, System.lineSeparator()));
             if (sublistItem.text != null) {
-                confirmSublist(sublistItem.sublistItems, level + 4);
+                confirmSublist(sb, sublistItem.sublistItems, level + 4);
             }
         }
     }
