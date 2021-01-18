@@ -30,15 +30,15 @@ public class ListItem {
         this.sublistItems.add(sublistItem);
     }
     public String toString() {
-        String stringListItem;
-        stringListItem = this.bulletStyle + " " + this.text + System.lineSeparator();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%c %s%s", this.bulletStyle, this.text, System.lineSeparator()));
         for (ListItem subListItem : this.sublistItems) {
-            stringListItem += "    " + subListItem.bulletStyle + " " + subListItem.text + System.lineSeparator();
+            sb.append(String.format("    %c %s%s", subListItem.bulletStyle, subListItem.text, System.lineSeparator()));
             for (ListItem subSubListItem : subListItem.sublistItems) {
-                stringListItem += "        " + subSubListItem.bulletStyle + " " + subSubListItem.text + System.lineSeparator();
+                sb.append(String.format("        %c %s%s", subSubListItem.bulletStyle, subSubListItem.text, System.lineSeparator()));
             }
         }
-        return stringListItem;
+        return sb.toString();
     }
     public void setBulletStyle(char bulletStyle) {
         this.bulletStyle = bulletStyle;
