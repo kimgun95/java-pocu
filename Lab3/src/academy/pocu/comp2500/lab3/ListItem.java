@@ -36,6 +36,9 @@ public class ListItem {
             sb.append(String.format("    %c %s%s", subListItem.bulletStyle, subListItem.text, System.lineSeparator()));
             for (ListItem subSubListItem : subListItem.sublistItems) {
                 sb.append(String.format("        %c %s%s", subSubListItem.bulletStyle, subSubListItem.text, System.lineSeparator()));
+                for (ListItem subSubSubListItem : subSubListItem.sublistItems) {
+                    sb.append(String.format("            %c %s%s", subSubSubListItem.bulletStyle, subSubSubListItem.text, System.lineSeparator()));
+                }
             }
         }
         return sb.toString();
