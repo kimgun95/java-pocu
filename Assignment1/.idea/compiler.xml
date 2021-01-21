@@ -2,5 +2,8 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint -Xlint:-fallthrough" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Assignment1" options="-Xlint -Xlint:-fallthrough --add-exports jdk.scripting.nashorn/jdk.nashorn.internal.objects=ALL-UNNAMED" />
+    </option>
   </component>
 </project>

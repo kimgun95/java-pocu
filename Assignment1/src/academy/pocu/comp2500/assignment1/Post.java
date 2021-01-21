@@ -6,14 +6,19 @@ import java.util.Comparator;
 
 public class Post {
     private String title;
+    private String author;
     private String body;
-    private OffsetDateTime createdDatetime;
-    private String tag = new String();
+    private OffsetDateTime createdDateTime;
+    private OffsetDateTime modifiedDateTime;
+    private ArrayList<String> tags = new ArrayList<>();
+    private ArrayList<Comment> comments = new ArrayList<>();
 
-    public Post(String title, String body, OffsetDateTime createdDatetime) {
+    public Post(String title, String author, String body) {
         this.title = title;
+        this.author = author;
         this.body = body;
-        this.createdDatetime = createdDatetime;
+        this.createdDateTime = OffsetDateTime.now();
+        this.modifiedDateTime = OffsetDateTime.now();
     }
     public String getTitle() {
         return this.title;
@@ -22,9 +27,14 @@ public class Post {
         return this.body;
     }
     public OffsetDateTime getOffsetDataTime() {
-        return this.createdDatetime;
+        return this.createdDateTime;
     }
-
+    public ArrayList<String> getTags() {
+        return this.tags;
+    }
+    public String getAuthor() {
+        return this.author;
+    }
     public static Comparator<Post> CreatedLate = new Comparator<Post>() {
         @Override
         public int compare(Post p1, Post p2) {
@@ -52,5 +62,18 @@ public class Post {
             return title1.compareTo(title2);
         }
     };
-
+    public void addPostTag(String tag) {
+        this.tags.add(tag);
+    }
+    public void updatePostTitle(String title) {
+        this.title = title;
+        this.modifiedDateTime = OffsetDateTime.now();
+    }
+    public void updatePostBody(String body) {
+        this.body = body;
+        this.modifiedDateTime = OffsetDateTime.now();
+    }
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
 }

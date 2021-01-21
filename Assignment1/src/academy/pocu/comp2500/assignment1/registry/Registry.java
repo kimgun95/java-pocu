@@ -41,48 +41,48 @@ public class Registry {
         return this.interfaces;
     }
 
-    public final void registerBlogCreator(final String className) {
-        this.interfaces.put(CREATE_BLOG, new Interface(className));
+    public final void registerBlogCreator(final String Blog) {
+        this.interfaces.put(CREATE_BLOG, new Interface(Blog));
     }
 
-    public void registerTagFilterSetter(final String className, final String methodName) {
-        this.interfaces.put(TAG_FILTER_SETTER, new Interface(className, methodName));
+    public void registerTagFilterSetter(final String Blog, final String setTag) {
+        this.interfaces.put(TAG_FILTER_SETTER, new Interface(Blog, setTag));
     }
 
-    public final void registerAuthorFilterSetter(final String className, final String methodName) {
-        this.interfaces.put(AUTHOR_FILTER_SETTER, new Interface(className, methodName));
+    public final void registerAuthorFilterSetter(final String Blog, final String setAuthor) {
+        this.interfaces.put(AUTHOR_FILTER_SETTER, new Interface(Blog, setAuthor));
     }
 
-    public final void registerPostOrderSetter(final String className, final String methodName) {
-        this.interfaces.put(POST_ORDER_SETTER, new Interface(className, methodName));
+    public final void registerPostOrderSetter(final String Blog, final String setPostOrder) {
+        this.interfaces.put(POST_ORDER_SETTER, new Interface(Blog, setPostOrder));
     }
 
-    public final void registerPostListGetter(final String className, final String methodName) {
-        this.interfaces.put(POST_LIST_GETTER, new Interface(className, methodName));
+    public final void registerPostListGetter(final String Blog, final String getPostList) {
+        this.interfaces.put(POST_LIST_GETTER, new Interface(Blog, getPostList));
     }
 
-    public final void registerPostAdder(final String className, final String methodName) {
-        this.interfaces.put(POST_ADDER, new Interface(className, methodName));
+    public final void registerPostAdder(final String Blog, final String addPost) {
+        this.interfaces.put(POST_ADDER, new Interface(Blog, addPost));
     }
 
-    public final void registerPostTitleUpdater(final String className, final String methodName) {
-        this.interfaces.put(POST_TITLE_UPDATER, new Interface(className, methodName));
+    public final void registerPostTitleUpdater(final String Post, final String updatePostTitle) {
+        this.interfaces.put(POST_TITLE_UPDATER, new Interface(Post, updatePostTitle));
     }
 
-    public final void registerPostBodyUpdater(final String className, final String methodName) {
-        this.interfaces.put(POST_BODY_UPDATER, new Interface(className, methodName));
+    public final void registerPostBodyUpdater(final String Post, final String updatePostBody) {
+        this.interfaces.put(POST_BODY_UPDATER, new Interface(Post, updatePostBody));
     }
 
-    public final void registerPostTagAdder(final String className, final String methodName) {
-        this.interfaces.put(POST_TAG_ADDER, new Interface(className, methodName));
+    public final void registerPostTagAdder(final String Post, final String addPostTag) {
+        this.interfaces.put(POST_TAG_ADDER, new Interface(Post, addPostTag));
     }
 
-    public final void registerCommentAdder(final String className, final String methodName) {
-        this.interfaces.put(COMMENT_ADDER, new Interface(className, methodName));
+    public final void registerCommentAdder(final String Post, final String addComment) {
+        this.interfaces.put(COMMENT_ADDER, new Interface(Post, addComment));
     }
 
-    public final void registerSubcommentAdder(final String className, final String methodName) {
-        this.interfaces.put(SUBCOMMENT_ADDER, new Interface(className, methodName));
+    public final void registerSubcommentAdder(final String Post, final String addComment) {
+        this.interfaces.put(SUBCOMMENT_ADDER, new Interface(Post, addComment));
     }
 
     public final void registerCommentUpdater(final String className, final String methodName) {

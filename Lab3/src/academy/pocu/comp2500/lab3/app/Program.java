@@ -2,27 +2,19 @@ package academy.pocu.comp2500.lab3.app;
 
 import academy.pocu.comp2500.lab3.ListItem;
 import java.util.ArrayList;
-import academy.pocu.comp2500.lab3.test;
+import static org.junit.Assert.*;
 
 public class Program {
 
     public static void main(String[] args) {
         ArrayList<ListItem> list = new ArrayList<>();
 
-        // ArrayList<test> testProgram = new ArrayList<>();
-        // test t1 = new test("this is test");
-        // System.out.print(t1 + System.lineSeparator());
-
         ListItem listItem1 = new ListItem("My first item");
-        // System.out.print(listItem1 + System.lineSeparator());
 
         ListItem sublistItem1 = new ListItem("This is sublist item1", '>');
         ListItem sublistItem2 = new ListItem("This is sublist item2", '>');
-        // System.out.print(sublistItem1);
-        // System.out.print(sublistItem2);
 
         listItem1.addSublistItem(sublistItem1);
-        // System.out.print(listItem1);
         listItem1.addSublistItem(sublistItem2);
 
         ListItem listItem2 = new ListItem("My second item");
@@ -36,7 +28,6 @@ public class Program {
         listItem3.addSublistItem(sublistItem3);
 
         list.add(listItem1);
-
         list.add(listItem2);
         list.add(listItem3);
 
@@ -55,9 +46,9 @@ public class Program {
         String expected = sb.toString();
 
         assert expected.equals(actual);
-        // System.out.print(expected);
-        // System.out.print("--------------" + System.lineSeparator());
+
         System.out.print(actual);
+
     }
     private static String toString(ArrayList<ListItem> list) {
         StringBuilder sb = new StringBuilder();
