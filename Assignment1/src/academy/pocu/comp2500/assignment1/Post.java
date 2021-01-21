@@ -2,6 +2,8 @@ package academy.pocu.comp2500.assignment1;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Post {
@@ -26,8 +28,11 @@ public class Post {
     public String getBody() {
         return this.body;
     }
-    public OffsetDateTime getOffsetDataTime() {
+    public OffsetDateTime getCreatedDateTime() {
         return this.createdDateTime;
+    }
+    public OffsetDateTime getModifiedDateTime() {
+        return this.modifiedDateTime;
     }
     public ArrayList<String> getTags() {
         return this.tags;
@@ -38,8 +43,8 @@ public class Post {
     public static Comparator<Post> CreatedLate = new Comparator<Post>() {
         @Override
         public int compare(Post p1, Post p2) {
-            OffsetDateTime time1 = p1.getOffsetDataTime();
-            OffsetDateTime time2 = p2.getOffsetDataTime();
+            OffsetDateTime time1 = p1.getCreatedDateTime();
+            OffsetDateTime time2 = p2.getCreatedDateTime();
             // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
             return time2.compareTo(time1);
         }
@@ -47,9 +52,27 @@ public class Post {
     public static Comparator<Post> CreatedFast = new Comparator<Post>() {
         @Override
         public int compare(Post p1, Post p2) {
-            OffsetDateTime time1 = p1.getOffsetDataTime();
-            OffsetDateTime time2 = p2.getOffsetDataTime();
+            OffsetDateTime time1 = p1.getCreatedDateTime();
+            OffsetDateTime time2 = p2.getCreatedDateTime();
 
+            return time1.compareTo(time2);
+        }
+    };
+    public static Comparator<Post> ModifiedLate = new Comparator<Post>() {
+        @Override
+        public int compare(Post p1, Post p2) {
+            OffsetDateTime time1 = p1.getModifiedDateTime();
+            OffsetDateTime time2 = p2.getModifiedDateTime();
+            // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
+            return time2.compareTo(time1);
+        }
+    };
+    public static Comparator<Post> ModifiedFast = new Comparator<Post>() {
+        @Override
+        public int compare(Post p1, Post p2) {
+            OffsetDateTime time1 = p1.getModifiedDateTime();
+            OffsetDateTime time2 = p2.getModifiedDateTime();
+            // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
             return time1.compareTo(time2);
         }
     };
@@ -76,4 +99,13 @@ public class Post {
     public void addComment(Comment comment) {
         this.comments.add(comment);
     }
+
+    public ArrayList<Comment> getCommentList() {
+        Collections.sort(this.comments, Comment.TopVoted);
+        for (Comment comment : this.comments) {
+            System.out.print(comment.getComment() + System.lineSeparator());
+        }
+        return this.comments;
+    }
+
 }

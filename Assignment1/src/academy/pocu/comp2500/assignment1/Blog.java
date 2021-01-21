@@ -20,39 +20,49 @@ public class Blog {
         this.posts.add(post);
     }
 
-    public void getPostList() {
+    public ArrayList<Post> getPostList() {
         if (sortingType == 1) {
-            System.out.print(String.format("%d%s",sortingType, System.lineSeparator()));
+            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
             Collections.sort(this.posts, Post.CreatedLate);
-        }
-        else if (sortingType == 2) {
-            System.out.print(String.format("%d%s",sortingType, System.lineSeparator()));
+        } else if (sortingType == 2) {
+            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
             Collections.sort(this.posts, Post.CreatedFast);
-        }
-        else {
-            System.out.print(String.format("%d%s",sortingType, System.lineSeparator()));
+        } else if (sortingType == 3) {
+            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
+            Collections.sort(this.posts, Post.ModifiedLate);
+        } else if (sortingType == 4) {
+            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
+            Collections.sort(this.posts, Post.ModifiedFast);
+        }else {
+            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
             Collections.sort(this.posts, Post.postTitle);
         }
 
+        ArrayList<Post> returnPost = new ArrayList<>();
+
         for (Post post : this.posts) {
             if (this.tag == null && this.author == null) {
+                returnPost.add(post);
                 System.out.print(post.getBody() + System.lineSeparator());
-            }
-            else if (this.author == null) {
+            } else if (this.author == null) {
                 for (String tag : post.getTags()) {
                     if (tag == this.tag) {
-                        System.out.print(post.getBody() + System.lineSeparator());                    }
+                        returnPost.add(post);
+                        System.out.print(post.getBody() + System.lineSeparator());
+                    }
                 }
-            }
-            else if (this.tag == null) {
+            } else if (this.tag == null) {
                 if (post.getAuthor() == this.author) {
-                    System.out.print(post.getBody() + System.lineSeparator());                }
-            }
-            else {
+                    returnPost.add(post);
+                    System.out.print(post.getBody() + System.lineSeparator());
+                }
+            } else {
                 System.out.print("필터는 한가지만 적용이 됩니다");
             }
         }
+        return returnPost;
     }
+
     public void setPostOrder(int sortingType) {
         this.sortingType = sortingType;
     }
@@ -62,15 +72,13 @@ public class Blog {
     public String getTag() {
         return this.tag;
     }
-    public String getAuthor() {
-        return this.author;
-    }
     public void setAuthor(String author) {
         this.author = author;
     }
-
-
-    public void addPostComment() {
-
+    public String getAuthor() {
+        return this.author;
     }
+
+
+
 }
