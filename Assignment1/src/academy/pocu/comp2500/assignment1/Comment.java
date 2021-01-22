@@ -2,6 +2,7 @@ package academy.pocu.comp2500.assignment1;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Comment {
@@ -9,12 +10,17 @@ public class Comment {
     private ArrayList<Comment> comments = new ArrayList();
     private ArrayList<String> userIdUpvote = new ArrayList<>();
     private ArrayList<String> userIdDownvote = new ArrayList<>();
+    private String commentId;
 
-    public Comment(String comment) {
+    public Comment(String comment, String userId) {
+        this.commentId = userId;
         this.comment = comment;
     }
     public String getComment() {
         return this.comment;
+    }
+    public String getCommentId() {
+        return this.commentId;
     }
     public ArrayList<String> getUserIdUpvote() {
         return this.userIdUpvote;
@@ -22,17 +28,19 @@ public class Comment {
     public ArrayList<String> getUserIdDownvote() {
         return this.userIdDownvote;
     }
-    public void addSubcomment(Comment comment) {
-        this.comments.add(comment);
-    }
-    public void updateComment(String comment) {
-        this.comment = comment;
-    }
-    public ArrayList<Comment> getCommentList() {
-        for (Comment comment : this.comments) {
-            System.out.print(comment.getComment() + System.lineSeparator());
+    public void addSubcomment(Comment comment, String userId) {
+        if (comment.getCommentId() == userId) {
+            this.comments.add(comment);
+        } else {
+            System.out.print("당신의 댓글이 아닙니다.");
         }
-        return this.comments;
+    }
+    public void updateComment(String comment, String userId) {
+        if (this.commentId == userId) {
+            this.comment = comment;
+        } else {
+            System.out.print("당신의 댓글이 아닙니다.");
+        }
     }
     public void commentUpvoter(String userId) {
         if (this.userIdDownvote.contains(userId)) {
@@ -40,10 +48,9 @@ public class Comment {
         }
         if (!this.userIdUpvote.contains(userId)) {
             this.userIdUpvote.add(userId);
+        } else {
+            this.userIdUpvote.remove(userId);
         }
-//        for (String id : this.userIdUpvote) {
-//            System.out.print(id + System.lineSeparator());
-//        }
     }
     public void commentDownvoter(String userId) {
         if (this.userIdUpvote.contains(userId)) {
@@ -51,13 +58,9 @@ public class Comment {
         }
         if (!this.userIdDownvote.contains(userId)) {
             this.userIdDownvote.add(userId);
+        } else {
+            this.userIdDownvote.remove(userId);
         }
-//        for (String id : this.userIdUpvote) {
-//            System.out.print(id + System.lineSeparator());
-//        }
-//        for (String id : this.userIdDownvote) {
-//            System.out.print(id + System.lineSeparator());
-//        }
     }
     public static Comparator<Comment> TopVoted = new Comparator<Comment>() {
         @Override
@@ -74,4 +77,11 @@ public class Comment {
             return c2Vote - c1Vote;
         }
     };
+    public ArrayList<Comment> getSubCommentList() {
+        Collections.sort(this.comments, Comment.TopVoted);
+         for (Comment comment : this.comments) {
+             System.out.print(comment.getComment() + System.lineSeparator());
+         }
+        return this.comments;
+    }
 }

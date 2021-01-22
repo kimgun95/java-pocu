@@ -14,13 +14,19 @@ public class Post {
     private OffsetDateTime modifiedDateTime;
     private ArrayList<String> tags = new ArrayList<>();
     private ArrayList<Comment> comments = new ArrayList<>();
+    private String postId;
+    private Reaction reaction = new Reaction();
 
-    public Post(String title, String author, String body) {
+    public Post(String title, String author, String body, String userId) {
         this.title = title;
         this.author = author;
         this.body = body;
         this.createdDateTime = OffsetDateTime.now();
         this.modifiedDateTime = OffsetDateTime.now();
+        this.postId = userId;
+    }
+    public String getPostId() {
+        return this.postId;
     }
     public String getTitle() {
         return this.title;
@@ -85,27 +91,47 @@ public class Post {
             return title1.compareTo(title2);
         }
     };
-    public void addPostTag(String tag) {
-        this.tags.add(tag);
+    public void addPostTag(String tag, String userId) {
+        if (this.postId == userId) {
+            this.tags.add(tag);
+        } else {
+            System.out.print("당신은 글의 주인이 아닙니다.");
+        }
     }
-    public void updatePostTitle(String title) {
-        this.title = title;
-        this.modifiedDateTime = OffsetDateTime.now();
+    public void updatePostTitle(String title, String userId) {
+        if (this.postId == userId) {
+            this.title = title;
+            this.modifiedDateTime = OffsetDateTime.now();
+        } else {
+            System.out.print("당신은 글의 주인이 아닙니다.");
+        }
     }
-    public void updatePostBody(String body) {
-        this.body = body;
-        this.modifiedDateTime = OffsetDateTime.now();
+    public void updatePostBody(String body, String userId) {
+        if (this.postId == userId) {
+            this.body = body;
+            this.modifiedDateTime = OffsetDateTime.now();
+        } else {
+            System.out.print("당신은 글의 주인이 아닙니다.");
+        }
     }
-    public void addComment(Comment comment) {
-        this.comments.add(comment);
+    public void addComment(Comment comment, String userId) {
+        if (comment.getCommentId() == userId) {
+            this.comments.add(comment);
+        } else {
+            System.out.print("당신은 댓글의 주인이 아닙니다.");
+        }
     }
-
     public ArrayList<Comment> getCommentList() {
         Collections.sort(this.comments, Comment.TopVoted);
-        for (Comment comment : this.comments) {
-            System.out.print(comment.getComment() + System.lineSeparator());
-        }
+         for (Comment comment : this.comments) {
+             System.out.print(comment.getComment() + System.lineSeparator());
+         }
         return this.comments;
     }
-
+    public void addReaction(int reaction, String userId) {
+        this.reaction.addReaction(reaction, userId);
+    }
+    public void removeReaction(int reaction, String userId) {
+        this.reaction.removeReaction(reaction, userId);
+    }
 }

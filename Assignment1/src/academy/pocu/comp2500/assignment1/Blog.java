@@ -9,17 +9,20 @@ public class Blog {
     private int sortingType;
     private String tag;
     private String author;
-
-    public Blog() {
+    private String blogId;
+    public Blog(String userId) {
         this.sortingType = 1;
         this.tag = null;
         this.author = null;
+        this.blogId = userId;
     }
-
-    public void addPost(Post post) {
-        this.posts.add(post);
+    public void addPost(Post post, String userId) {
+        if (post.getPostId() == userId) {
+            this.posts.add(post);
+        } else {
+            System.out.print("당신의 글이 아닙니다.");
+        }
     }
-
     public ArrayList<Post> getPostList() {
         if (sortingType == 1) {
             System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
@@ -43,42 +46,38 @@ public class Blog {
         for (Post post : this.posts) {
             if (this.tag == null && this.author == null) {
                 returnPost.add(post);
-                System.out.print(post.getBody() + System.lineSeparator());
+                // System.out.print(post.getBody() + System.lineSeparator());
             } else if (this.author == null) {
                 for (String tag : post.getTags()) {
                     if (tag == this.tag) {
                         returnPost.add(post);
-                        System.out.print(post.getBody() + System.lineSeparator());
+                        // System.out.print(post.getBody() + System.lineSeparator());
                     }
                 }
             } else if (this.tag == null) {
                 if (post.getAuthor() == this.author) {
                     returnPost.add(post);
-                    System.out.print(post.getBody() + System.lineSeparator());
+                    // System.out.print(post.getBody() + System.lineSeparator());
                 }
             } else {
-                System.out.print("필터는 한가지만 적용이 됩니다");
+                System.out.print("필터 쪽 에러입니다.");
             }
         }
         return returnPost;
     }
-
     public void setPostOrder(int sortingType) {
         this.sortingType = sortingType;
     }
     public void setTag(String tag) {
+        if (this.author != null) {
+            this.author = null;
+        }
         this.tag = tag;
     }
-    public String getTag() {
-        return this.tag;
-    }
     public void setAuthor(String author) {
+        if (this.tag != null) {
+            this.tag = null;
+        }
         this.author = author;
     }
-    public String getAuthor() {
-        return this.author;
-    }
-
-
-
 }
