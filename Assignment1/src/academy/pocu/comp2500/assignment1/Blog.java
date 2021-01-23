@@ -79,29 +79,35 @@ public class Blog {
             });
         }
 
-        ArrayList<Post> returnPost = new ArrayList<>();
-
-        for (Post post : this.posts) {
-            if (this.tag == null && this.author == null) {
-                returnPost.add(post);
-                // System.out.print(post.getBody() + System.lineSeparator());
-            } else if (this.author == null) {
-                for (String tag : post.getTags()) {
-                    if (tag == this.tag) {
-                        returnPost.add(post);
-                        // System.out.print(post.getBody() + System.lineSeparator());
-                    }
-                }
-            } else if (this.tag == null) {
-                if (post.getAuthor() == this.author) {
-                    returnPost.add(post);
-                    // System.out.print(post.getBody() + System.lineSeparator());
-                }
-            } else {
-                System.out.print("필터 쪽 에러입니다.");
-            }
-        }
-        return returnPost;
+//        ArrayList<Post> returnPost = new ArrayList<>();
+//
+//        for (Post post : this.posts) {
+//            if (this.tag == null && this.author == null) {
+//                returnPost.add(post);
+//                // System.out.print(post.getBody() + System.lineSeparator());
+//            } else if (this.author == null) {
+//                for (String tag : post.getTags()) {
+//                    if (tag == this.tag) {
+//                        returnPost.add(post);
+//                        // System.out.print(post.getBody() + System.lineSeparator());
+//                    }
+//                }
+//            } else if (this.tag == null) {
+//                if (post.getAuthor() == this.author) {
+//                    returnPost.add(post);
+//                    // System.out.print(post.getBody() + System.lineSeparator());
+//                }
+//            } else {
+//                System.out.print("필터 쪽 에러입니다.");
+//            }
+//        }
+        return this.posts;
+    }
+    public void updatePostBody(Post post, String body, String userId) {
+        post.updatePostBody(body, userId);
+    }
+    public void updatePostTitle(Post post, String title, String userId) {
+        post.updatePostTitle(title, userId);
     }
     public void setPostOrder(Sorting sortingType) {
         this.sortingType = sortingType;

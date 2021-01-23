@@ -9,10 +9,10 @@ public class App {
         registry.registerTagFilterSetter("User", "setTag");
         registry.registerAuthorFilterSetter("User", "setAuthor");
         registry.registerPostOrderSetter("User", "setPostOrder");
-        registry.registerPostListGetter("User", "getPostList");
+        registry.registerPostListGetter("Blog", "getPostList");
         registry.registerPostAdder("Blog", "addPost");
-        registry.registerPostTitleUpdater("User", "updatePostTitle");
-        registry.registerPostBodyUpdater("User", "updatePostBody");
+        registry.registerPostTitleUpdater("Blog", "updatePostTitle");
+        registry.registerPostBodyUpdater("Blog", "updatePostBody");
         registry.registerPostTagAdder("User", "addPostTag");
         registry.registerCommentAdder("User", "addComment");
         registry.registerSubcommentAdder("User", "addSubcomment");

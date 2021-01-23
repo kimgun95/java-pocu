@@ -61,16 +61,12 @@ public class Post {
         if (this.postId == userId) {
             this.title = title;
             this.modifiedDateTime = OffsetDateTime.now();
-        } else {
-            System.out.print("당신은 글의 주인이 아닙니다.");
         }
     }
     public void updatePostBody(String body, String userId) {
         if (this.postId == userId) {
             this.body = body;
             this.modifiedDateTime = OffsetDateTime.now();
-        } else {
-            System.out.print("당신은 글의 주인이 아닙니다.");
         }
     }
     public void addComment(Comment comment, String userId) {

@@ -16,16 +16,7 @@ public class User {
     public String getUserId() {
         return this.userId;
     }
-    //public void addPost(Blog blog, Post post) {
-    //if (this.blog == blog) {
-            //blog.addPost(post, this.userId);
-        //} else {
-            //System.out.print("당신은 블로그 주인이 아닙니다.");
-        //}
-    //}
-    public ArrayList<Post> getPostList(Blog blog) {
-        return blog.getPostList();
-    }
+
     public void setTag(Blog blog, String tag) {
         blog.setTag(tag);
     }
@@ -35,12 +26,7 @@ public class User {
     public void setPostOrder(Blog blog, Sorting sortingType) {
         blog.setPostOrder(sortingType);
     }
-    public void updatePostBody(Post post, String body) {
-        post.updatePostBody(body, this.userId);
-    }
-    public void updatePostTitle(Post post, String title) {
-        post.updatePostTitle(title, this.userId);
-    }
+
     public void addPostTag(Post post, String tag) {
         post.addPostTag(tag, this.userId);
     }
