@@ -46,14 +46,14 @@ public class Reaction {
             System.out.print("존재하지 않는 리액션입니다.");
         }
     }
-    private void updateReaction(ArrayList<String> reaction, String userId, String reactionId) {
+    private void updateReaction(ArrayList<String> emojiId, String userId, String reactionId) {
         if (reactionId == "1") {
-            if (!reaction.contains(userId)) {
-                reaction.add(userId);
+            if (!emojiId.contains(userId)) {
+                emojiId.add(userId);
             }
         } else {
-            if (reaction.contains(userId)) {
-                reaction.remove(userId);
+            if (emojiId.contains(userId)) {
+                emojiId.remove(userId);
             }
         }
         // for (String id : reaction) {
