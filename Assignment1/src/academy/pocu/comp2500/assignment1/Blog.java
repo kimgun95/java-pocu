@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Blog {
-    private ArrayList<Post> posts = new ArrayList<>();
+    private ArrayList<Post> posts;
     private String tag;
     private String author;
     private String blogId;
@@ -17,6 +17,7 @@ public class Blog {
         this.tag = null;
         this.author = null;
         this.blogId = userId;
+        this.posts = new ArrayList<>();
     }
     public void addPost(Post post) {
         this.posts.add(post);

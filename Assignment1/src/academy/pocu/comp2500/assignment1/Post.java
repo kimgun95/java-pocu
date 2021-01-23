@@ -12,10 +12,10 @@ public class Post {
     private String body;
     private OffsetDateTime createdDateTime;
     private OffsetDateTime modifiedDateTime;
-    private ArrayList<String> tags = new ArrayList<>();
-    private ArrayList<Comment> comments = new ArrayList<>();
+    private ArrayList<String> tags;
+    private ArrayList<Comment> comments;
     private String postId;
-    private Reaction reaction = new Reaction();
+    private Reaction reaction;
 
     public Post(String title, String author, String body, String userId) {
         this.title = title;
@@ -24,6 +24,9 @@ public class Post {
         this.createdDateTime = OffsetDateTime.now();
         this.modifiedDateTime = OffsetDateTime.now();
         this.postId = userId;
+        this.tags = new ArrayList<>();
+        this.comments = new ArrayList<>();
+        this.reaction = new Reaction();
     }
     public String getBody() {
         return this.body;

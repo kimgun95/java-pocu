@@ -7,14 +7,17 @@ import java.util.Comparator;
 
 public class Comment {
     private String comment;
-    private ArrayList<Comment> comments = new ArrayList<>();
-    private ArrayList<String> userIdUpvote = new ArrayList<>();
-    private ArrayList<String> userIdDownvote = new ArrayList<>();
+    private ArrayList<Comment> comments;
+    private ArrayList<String> userIdUpvote;
+    private ArrayList<String> userIdDownvote;
     private String commentId;
 
     public Comment(String comment, String userId) {
         this.commentId = userId;
         this.comment = comment;
+        this.comments = new ArrayList<>();
+        this.userIdUpvote = new ArrayList<>();
+        this.userIdDownvote = new ArrayList<>();
     }
     // public String getComment() {
         // return this.comment;
