@@ -41,88 +41,88 @@ public class Registry {
         return this.interfaces;
     }
 
-    public final void registerBlogCreator(final String Blog) {
-        this.interfaces.put(CREATE_BLOG, new Interface(Blog));
+    public final void registerBlogCreator(final String className) {
+        this.interfaces.put(CREATE_BLOG, new Interface(className));
     }
 
-    public void registerTagFilterSetter(final String User, final String setTag) {
-        this.interfaces.put(TAG_FILTER_SETTER, new Interface(User, setTag));
+    public void registerTagFilterSetter(final String className, final String methodName) {
+        this.interfaces.put(TAG_FILTER_SETTER, new Interface(className, methodName));
     }
 
-    public final void registerAuthorFilterSetter(final String User, final String setAuthor) {
-        this.interfaces.put(AUTHOR_FILTER_SETTER, new Interface(User, setAuthor));
+    public final void registerAuthorFilterSetter(final String className, final String methodName) {
+        this.interfaces.put(AUTHOR_FILTER_SETTER, new Interface(className, methodName));
     }
 
-    public final void registerPostOrderSetter(final String User, final String setPostOrder) {
-        this.interfaces.put(POST_ORDER_SETTER, new Interface(User, setPostOrder));
+    public final void registerPostOrderSetter(final String className, final String methodName) {
+        this.interfaces.put(POST_ORDER_SETTER, new Interface(className, methodName));
     }
 
-    public final void registerPostListGetter(final String User, final String getPostList) {
-        this.interfaces.put(POST_LIST_GETTER, new Interface(User, getPostList));
+    public final void registerPostListGetter(final String className, final String methodName) {
+        this.interfaces.put(POST_LIST_GETTER, new Interface(className, methodName));
     }
 
-    public final void registerPostAdder(final String User, final String addPost) {
-        this.interfaces.put(POST_ADDER, new Interface(User, addPost));
+    public final void registerPostAdder(final String className, final String methodName) {
+        this.interfaces.put(POST_ADDER, new Interface(className, methodName));
     }
 
-    public final void registerPostTitleUpdater(final String User, final String updatePostTitle) {
-        this.interfaces.put(POST_TITLE_UPDATER, new Interface(User, updatePostTitle));
+    public final void registerPostTitleUpdater(final String className, final String methodName) {
+        this.interfaces.put(POST_TITLE_UPDATER, new Interface(className, methodName));
     }
 
-    public final void registerPostBodyUpdater(final String User, final String updatePostBody) {
-        this.interfaces.put(POST_BODY_UPDATER, new Interface(User, updatePostBody));
+    public final void registerPostBodyUpdater(final String className, final String methodName) {
+        this.interfaces.put(POST_BODY_UPDATER, new Interface(className, methodName));
     }
 
-    public final void registerPostTagAdder(final String User, final String addPostTag) {
-        this.interfaces.put(POST_TAG_ADDER, new Interface(User, addPostTag));
+    public final void registerPostTagAdder(final String className, final String methodName) {
+        this.interfaces.put(POST_TAG_ADDER, new Interface(className, methodName));
     }
 
-    public final void registerCommentAdder(final String User, final String addComment) {
-        this.interfaces.put(COMMENT_ADDER, new Interface(User, addComment));
+    public final void registerCommentAdder(final String className, final String methodName) {
+        this.interfaces.put(COMMENT_ADDER, new Interface(className, methodName));
     }
 
-    public final void registerSubcommentAdder(final String User, final String addSubcomment) {
-        this.interfaces.put(SUBCOMMENT_ADDER, new Interface(User, addSubcomment));
+    public final void registerSubcommentAdder(final String className, final String methodName) {
+        this.interfaces.put(SUBCOMMENT_ADDER, new Interface(className, methodName));
     }
 
-    public final void registerCommentUpdater(final String User, final String updateComment) {
-        this.interfaces.put(COMMENT_UPDATER, new Interface(User, updateComment));
+    public final void registerCommentUpdater(final String className, final String methodName) {
+        this.interfaces.put(COMMENT_UPDATER, new Interface(className, methodName));
     }
 
-    public final void registerSubcommentUpdater(final String User, final String updateComment) {
-        this.interfaces.put(SUBCOMMENT_UPDATER, new Interface(User, updateComment));
+    public final void registerSubcommentUpdater(final String className, final String methodName) {
+        this.interfaces.put(SUBCOMMENT_UPDATER, new Interface(className, methodName));
     }
 
-    public final void registerReactionAdder(final String User, final String addReaction) {
-        this.interfaces.put(REACTION_ADDER, new Interface(User, addReaction));
+    public final void registerReactionAdder(final String className, final String methodName) {
+        this.interfaces.put(REACTION_ADDER, new Interface(className, methodName));
     }
 
-    public final void registerReactionRemover(final String User, final String removeReaction) {
-        this.interfaces.put(REACTION_REMOVER, new Interface(User, removeReaction));
+    public final void registerReactionRemover(final String className, final String methodName) {
+        this.interfaces.put(REACTION_REMOVER, new Interface(className, methodName));
     }
 
-    public final void registerCommentUpvoter(final String User, final String commentUpvoter) {
-        this.interfaces.put(COMMENT_UPVOTER, new Interface(User, commentUpvoter));
+    public final void registerCommentUpvoter(final String className, final String methodName) {
+        this.interfaces.put(COMMENT_UPVOTER, new Interface(className, methodName));
     }
 
-    public final void registerCommentDownvoter(final String User, final String commentDownvoter) {
-        this.interfaces.put(COMMENT_DOWNVOTER, new Interface(User, commentDownvoter));
+    public final void registerCommentDownvoter(final String className, final String methodName) {
+        this.interfaces.put(COMMENT_DOWNVOTER, new Interface(className, methodName));
     }
 
-    public final void registerCommentListGetter(final String User, final String getCommentList) {
-        this.interfaces.put(COMMENT_LIST_GETTER, new Interface(User, getCommentList));
+    public final void registerCommentListGetter(final String className, final String methodName) {
+        this.interfaces.put(COMMENT_LIST_GETTER, new Interface(className, methodName));
     }
 
-    public final void registerSubcommentListGetter(final String User, final String getSubCommentList) {
-        this.interfaces.put(SUBCOMMENT_LIST_GETTER, new Interface(User, getSubCommentList));
+    public final void registerSubcommentListGetter(final String className, final String methodName) {
+        this.interfaces.put(SUBCOMMENT_LIST_GETTER, new Interface(className, methodName));
     }
 
-    public final void registerSubcommentUpvoter(final String User, final String commentUpvoter) {
-        this.interfaces.put(SUBCOMMENT_UPVOTER, new Interface(User, commentUpvoter));
+    public final void registerSubcommentUpvoter(final String className, final String methodName) {
+        this.interfaces.put(SUBCOMMENT_UPVOTER, new Interface(className, methodName));
     }
 
-    public final void registerSubcommentDownvoter(final String User, final String commentDownvoter) {
-        this.interfaces.put(SUBCOMMENT_DOWNVOTER, new Interface(User, commentDownvoter));
+    public final void registerSubcommentDownvoter(final String className, final String methodName) {
+        this.interfaces.put(SUBCOMMENT_DOWNVOTER, new Interface(className, methodName));
     }
 
     public void validate() {

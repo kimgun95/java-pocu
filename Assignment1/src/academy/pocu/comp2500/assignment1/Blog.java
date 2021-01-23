@@ -10,6 +10,7 @@ public class Blog {
     private String tag;
     private String author;
     private String blogId;
+
     public Blog(String userId) {
         this.sortingType = 1;
         this.tag = null;
