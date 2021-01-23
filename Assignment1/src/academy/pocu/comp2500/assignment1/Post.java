@@ -48,45 +48,45 @@ public class Post {
     }
     public static Comparator<Post> CreatedLate = new Comparator<Post>() {
         @Override
-        public int compare(Post p1, Post p2) {
-            OffsetDateTime time1 = p1.getCreatedDateTime();
-            OffsetDateTime time2 = p2.getCreatedDateTime();
+        public int compare(Post post, Post postId) {
+            OffsetDateTime time1 = post.getCreatedDateTime();
+            OffsetDateTime time2 = postId.getCreatedDateTime();
             // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
             return time2.compareTo(time1);
         }
     };
     public static Comparator<Post> CreatedFast = new Comparator<Post>() {
         @Override
-        public int compare(Post p1, Post p2) {
-            OffsetDateTime time1 = p1.getCreatedDateTime();
-            OffsetDateTime time2 = p2.getCreatedDateTime();
+        public int compare(Post post, Post postId) {
+            OffsetDateTime time1 = post.getCreatedDateTime();
+            OffsetDateTime time2 = postId.getCreatedDateTime();
 
             return time1.compareTo(time2);
         }
     };
     public static Comparator<Post> ModifiedLate = new Comparator<Post>() {
         @Override
-        public int compare(Post p1, Post p2) {
-            OffsetDateTime time1 = p1.getModifiedDateTime();
-            OffsetDateTime time2 = p2.getModifiedDateTime();
+        public int compare(Post post, Post postId) {
+            OffsetDateTime time1 = post.getModifiedDateTime();
+            OffsetDateTime time2 = postId.getModifiedDateTime();
             // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
             return time2.compareTo(time1);
         }
     };
     public static Comparator<Post> ModifiedFast = new Comparator<Post>() {
         @Override
-        public int compare(Post p1, Post p2) {
-            OffsetDateTime time1 = p1.getModifiedDateTime();
-            OffsetDateTime time2 = p2.getModifiedDateTime();
+        public int compare(Post post, Post postId) {
+            OffsetDateTime time1 = post.getModifiedDateTime();
+            OffsetDateTime time2 = postId.getModifiedDateTime();
             // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
             return time1.compareTo(time2);
         }
     };
     public static Comparator<Post> postTitle = new Comparator<Post>() {
         @Override
-        public int compare(Post p1, Post p2) {
-            String title1 = p1.getTitle();
-            String title2 = p2.getTitle();
+        public int compare(Post post, Post postId) {
+            String title1 = post.getTitle();
+            String title2 = postId.getTitle();
 
             return title1.compareTo(title2);
         }
@@ -123,15 +123,15 @@ public class Post {
     }
     public ArrayList<Comment> getCommentList() {
         Collections.sort(this.comments, Comment.TopVoted);
-         for (Comment comment : this.comments) {
-             System.out.print(comment.getComment() + System.lineSeparator());
-         }
+         // for (Comment comment : this.comments) {
+         //     System.out.print(comment.getComment() + System.lineSeparator());
+         // }
         return this.comments;
     }
-    public void addReaction(int reaction, String userId) {
+    public void addReaction(ReactionType reaction, String userId) {
         this.reaction.addReaction(reaction, userId);
     }
-    public void removeReaction(int reaction, String userId) {
+    public void removeReaction(ReactionType reaction, String userId) {
         this.reaction.removeReaction(reaction, userId);
     }
 }

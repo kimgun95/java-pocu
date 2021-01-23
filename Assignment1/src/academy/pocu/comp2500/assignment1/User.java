@@ -32,7 +32,7 @@ public class User {
     public void setAuthor(Blog blog, String author) {
         blog.setAuthor(author);
     }
-    public void setPostOrder(Blog blog, int sortingType) {
+    public void setPostOrder(Blog blog, Sorting sortingType) {
         blog.setPostOrder(sortingType);
     }
     public void updatePostBody(Post post, String body) {
@@ -56,8 +56,8 @@ public class User {
     public void commentDownvoter(Comment comment) {
         comment.commentDownvoter(this.userId);
     }
-    public void addSubcomment(Comment comment, Comment subComment) {
-        comment.addSubcomment(subComment, this.userId);
+    public void addSubcomment(Comment comment, Comment subcomment) {
+        comment.addSubcomment(subcomment, this.userId);
     }
     public ArrayList<Comment> getSubCommentList(Comment comment) {
         return comment.getSubCommentList();
@@ -65,10 +65,10 @@ public class User {
     public void updateComment(Comment comment, String modified) {
         comment.updateComment(modified, this.userId);
     }
-    public void addReaction(Post post, int reaction) {
+    public void addReaction(Post post, ReactionType reaction) {
         post.addReaction(reaction, this.userId);
     }
-    public void removeReaction(Post post, int reaction) {
+    public void removeReaction(Post post, ReactionType reaction) {
         post.removeReaction(reaction, this.userId);
     }
     public void subCommentUpvoter(Comment comment) {

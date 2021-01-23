@@ -64,11 +64,11 @@ public class Comment {
     }
     public static Comparator<Comment> TopVoted = new Comparator<Comment>() {
         @Override
-        public int compare(Comment c1, Comment c2) {
-            ArrayList<String> c1UserUpvote = c1.getUserIdUpvote();
-            ArrayList<String> c1UserIdDownvote = c1.getUserIdDownvote();
-            ArrayList<String> c2UserUpvote = c2.getUserIdUpvote();
-            ArrayList<String> c2UserIdDownvote = c2.getUserIdDownvote();
+        public int compare(Comment comment, Comment commentId) {
+            ArrayList<String> c1UserUpvote = comment.getUserIdUpvote();
+            ArrayList<String> c1UserIdDownvote = comment.getUserIdDownvote();
+            ArrayList<String> c2UserUpvote = commentId.getUserIdUpvote();
+            ArrayList<String> c2UserIdDownvote = commentId.getUserIdDownvote();
 
             int c1Vote = c1UserUpvote.size() - c1UserIdDownvote.size();
             int c2Vote = c2UserUpvote.size() - c2UserIdDownvote.size();
@@ -79,9 +79,9 @@ public class Comment {
     };
     public ArrayList<Comment> getSubCommentList() {
         Collections.sort(this.comments, Comment.TopVoted);
-         for (Comment comment : this.comments) {
-             System.out.print(comment.getComment() + System.lineSeparator());
-         }
+         // for (Comment comment : this.comments) {
+         //     System.out.print(comment.getComment() + System.lineSeparator());
+         // }
         return this.comments;
     }
 }

@@ -3,16 +3,17 @@ package academy.pocu.comp2500.assignment1;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+
 public class Blog {
     private ArrayList<Post> posts = new ArrayList<>();
-    // 1.createdLate, 2.createdFast, 3.modifiedLate, 4.modifiedFast, 5.title
-    private int sortingType;
     private String tag;
     private String author;
     private String blogId;
+    private Sorting sortingType;
 
     public Blog(String userId) {
-        this.sortingType = 1;
+        this.sortingType = Sorting.CREATEDLATE;
         this.tag = null;
         this.author = null;
         this.blogId = userId;
@@ -25,21 +26,20 @@ public class Blog {
         }
     }
     public ArrayList<Post> getPostList() {
-        if (sortingType == 1) {
-            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, Post.CreatedLate);
-        } else if (sortingType == 2) {
-            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
+        if (sortingType == Sorting.CREATEDFAST) {
+            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
             Collections.sort(this.posts, Post.CreatedFast);
-        } else if (sortingType == 3) {
-            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
+        } else if (sortingType == Sorting.MODIFIEDLATE) {
+            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
             Collections.sort(this.posts, Post.ModifiedLate);
-        } else if (sortingType == 4) {
-            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
+        } else if (sortingType == Sorting.MODIFIEDFAST) {
+            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
             Collections.sort(this.posts, Post.ModifiedFast);
-        }else {
-            System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
+        } else if (sortingType == Sorting.POSTTITLE) {
+            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
             Collections.sort(this.posts, Post.postTitle);
+        } else {
+            Collections.sort(this.posts, Post.CreatedLate);
         }
 
         ArrayList<Post> returnPost = new ArrayList<>();
@@ -66,7 +66,7 @@ public class Blog {
         }
         return returnPost;
     }
-    public void setPostOrder(int sortingType) {
+    public void setPostOrder(Sorting sortingType) {
         this.sortingType = sortingType;
     }
     public void setTag(String tag) {
