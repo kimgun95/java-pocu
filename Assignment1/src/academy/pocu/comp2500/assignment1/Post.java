@@ -17,9 +17,9 @@ public class Post {
     private String postId;
     private Reaction reaction;
 
-    public Post(String title, String author, String body, String userId) {
+    public Post(String title, String body, String userId) {
         this.title = title;
-        this.author = author;
+        this.author = userId;
         this.body = body;
         this.createdDateTime = OffsetDateTime.now();
         this.modifiedDateTime = OffsetDateTime.now();
