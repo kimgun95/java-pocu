@@ -46,51 +46,7 @@ public class Post {
     public String getAuthor() {
         return this.author;
     }
-    public static Comparator<Post> CreatedLate = new Comparator<Post>() {
-        @Override
-        public int compare(Post post, Post postId) {
-            OffsetDateTime time1 = post.getCreatedDateTime();
-            OffsetDateTime time2 = postId.getCreatedDateTime();
-            // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-            return time2.compareTo(time1);
-        }
-    };
-    public static Comparator<Post> CreatedFast = new Comparator<Post>() {
-        @Override
-        public int compare(Post post, Post postId) {
-            OffsetDateTime time1 = post.getCreatedDateTime();
-            OffsetDateTime time2 = postId.getCreatedDateTime();
 
-            return time1.compareTo(time2);
-        }
-    };
-    public static Comparator<Post> ModifiedLate = new Comparator<Post>() {
-        @Override
-        public int compare(Post post, Post postId) {
-            OffsetDateTime time1 = post.getModifiedDateTime();
-            OffsetDateTime time2 = postId.getModifiedDateTime();
-            // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-            return time2.compareTo(time1);
-        }
-    };
-    public static Comparator<Post> ModifiedFast = new Comparator<Post>() {
-        @Override
-        public int compare(Post post, Post postId) {
-            OffsetDateTime time1 = post.getModifiedDateTime();
-            OffsetDateTime time2 = postId.getModifiedDateTime();
-            // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-            return time1.compareTo(time2);
-        }
-    };
-    public static Comparator<Post> postTitle = new Comparator<Post>() {
-        @Override
-        public int compare(Post post, Post postId) {
-            String title1 = post.getTitle();
-            String title2 = postId.getTitle();
-
-            return title1.compareTo(title2);
-        }
-    };
     public void addPostTag(String tag, String userId) {
         if (this.postId == userId) {
             this.tags.add(tag);
@@ -122,9 +78,23 @@ public class Post {
         }
     }
     public ArrayList<Comment> getCommentList() {
-        Collections.sort(this.comments, Comment.TopVoted);
+        Collections.sort(this.comments, new Comparator<Comment>() {
+            @Override
+            public int compare(Comment comment, Comment commentId) {
+                ArrayList<String> c1UserUpvote = comment.getUserIdUpvote();
+                ArrayList<String> c1UserIdDownvote = comment.getUserIdDownvote();
+                ArrayList<String> c2UserUpvote = commentId.getUserIdUpvote();
+                ArrayList<String> c2UserIdDownvote = commentId.getUserIdDownvote();
+
+                int c1Vote = c1UserUpvote.size() - c1UserIdDownvote.size();
+                int c2Vote = c2UserUpvote.size() - c2UserIdDownvote.size();
+
+                // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
+                return c2Vote - c1Vote;
+            }
+        });
          // for (Comment comment : this.comments) {
-         //     System.out.print(comment.getComment() + System.lineSeparator());
+            // System.out.print(comment.getComment() + System.lineSeparator());
          // }
         return this.comments;
     }

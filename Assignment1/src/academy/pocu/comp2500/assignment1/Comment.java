@@ -7,7 +7,7 @@ import java.util.Comparator;
 
 public class Comment {
     private String comment;
-    private ArrayList<Comment> comments = new ArrayList();
+    private ArrayList<Comment> comments = new ArrayList<>();
     private ArrayList<String> userIdUpvote = new ArrayList<>();
     private ArrayList<String> userIdDownvote = new ArrayList<>();
     private String commentId;
@@ -62,26 +62,25 @@ public class Comment {
             this.userIdDownvote.remove(userId);
         }
     }
-    public static Comparator<Comment> TopVoted = new Comparator<Comment>() {
-        @Override
-        public int compare(Comment comment, Comment commentId) {
-            ArrayList<String> c1UserUpvote = comment.getUserIdUpvote();
-            ArrayList<String> c1UserIdDownvote = comment.getUserIdDownvote();
-            ArrayList<String> c2UserUpvote = commentId.getUserIdUpvote();
-            ArrayList<String> c2UserIdDownvote = commentId.getUserIdDownvote();
-
-            int c1Vote = c1UserUpvote.size() - c1UserIdDownvote.size();
-            int c2Vote = c2UserUpvote.size() - c2UserIdDownvote.size();
-
-            // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-            return c2Vote - c1Vote;
-        }
-    };
     public ArrayList<Comment> getSubCommentList() {
-        Collections.sort(this.comments, Comment.TopVoted);
-         // for (Comment comment : this.comments) {
-         //     System.out.print(comment.getComment() + System.lineSeparator());
-         // }
+        Collections.sort(this.comments, new Comparator<Comment>() {
+            @Override
+            public int compare(Comment comment, Comment commentId) {
+                ArrayList<String> c1UserUpvote = comment.getUserIdUpvote();
+                ArrayList<String> c1UserIdDownvote = comment.getUserIdDownvote();
+                ArrayList<String> c2UserUpvote = commentId.getUserIdUpvote();
+                ArrayList<String> c2UserIdDownvote = commentId.getUserIdDownvote();
+
+                int c1Vote = c1UserUpvote.size() - c1UserIdDownvote.size();
+                int c2Vote = c2UserUpvote.size() - c2UserIdDownvote.size();
+
+                // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
+                return c2Vote - c1Vote;
+            }
+        });
+        // for (Comment comment : this.comments) {
+            // System.out.print(comment.getComment() + System.lineSeparator());
+        // }
         return this.comments;
     }
 }

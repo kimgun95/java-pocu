@@ -5,7 +5,7 @@ import academy.pocu.comp2500.assignment1.registry.Registry;
 public class App {
     public App(Registry registry) {
         // Register like this
-        registry.registerBlogCreator("Blog");
+        registry.registerBlogCreator("User");
         registry.registerTagFilterSetter("User", "setTag");
         registry.registerAuthorFilterSetter("User", "setAuthor");
         registry.registerPostOrderSetter("User", "setPostOrder");

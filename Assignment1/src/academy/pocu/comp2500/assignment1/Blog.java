@@ -1,7 +1,9 @@
 package academy.pocu.comp2500.assignment1;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 
 
@@ -28,18 +30,58 @@ public class Blog {
     public ArrayList<Post> getPostList() {
         if (sortingType == Sorting.CREATEDFAST) {
             // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, Post.CreatedFast);
+            Collections.sort(this.posts, new Comparator<Post>() {
+                @Override
+                public int compare(Post post, Post postId) {
+                    OffsetDateTime time1 = post.getCreatedDateTime();
+                    OffsetDateTime time2 = postId.getCreatedDateTime();
+
+                    return time1.compareTo(time2);
+                }
+            });
         } else if (sortingType == Sorting.MODIFIEDLATE) {
             // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, Post.ModifiedLate);
+            Collections.sort(this.posts, new Comparator<Post>() {
+                @Override
+                public int compare(Post post, Post postId) {
+                    OffsetDateTime time1 = post.getModifiedDateTime();
+                    OffsetDateTime time2 = postId.getModifiedDateTime();
+                    // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
+                    return time2.compareTo(time1);
+                }
+            });
         } else if (sortingType == Sorting.MODIFIEDFAST) {
             // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, Post.ModifiedFast);
+            Collections.sort(this.posts, new Comparator<Post>() {
+                @Override
+                public int compare(Post post, Post postId) {
+                    OffsetDateTime time1 = post.getModifiedDateTime();
+                    OffsetDateTime time2 = postId.getModifiedDateTime();
+                    // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
+                    return time1.compareTo(time2);
+                }
+            });
         } else if (sortingType == Sorting.POSTTITLE) {
             // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, Post.postTitle);
+            Collections.sort(this.posts, new Comparator<Post>() {
+                @Override
+                public int compare(Post post, Post postId) {
+                    String title1 = post.getTitle();
+                    String title2 = postId.getTitle();
+
+                    return title1.compareTo(title2);
+                }
+            });
         } else {
-            Collections.sort(this.posts, Post.CreatedLate);
+            Collections.sort(this.posts, new Comparator<Post>() {
+                @Override
+                public int compare(Post post, Post postId) {
+                    OffsetDateTime time1 = post.getCreatedDateTime();
+                    OffsetDateTime time2 = postId.getCreatedDateTime();
+                    // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
+                    return time2.compareTo(time1);
+                }
+            });
         }
 
         ArrayList<Post> returnPost = new ArrayList<>();
