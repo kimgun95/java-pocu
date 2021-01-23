@@ -25,15 +25,15 @@ public class Post {
         this.modifiedDateTime = OffsetDateTime.now();
         this.postId = userId;
     }
+    public String getBody() {
+        return this.body;
+    }
     public String getPostId() {
         return this.postId;
     }
     public String getTitle() {
         return this.title;
     }
-    // public String getBody() {
-        // return this.body;
-    // }
     public OffsetDateTime getCreatedDateTime() {
         return this.createdDateTime;
     }
