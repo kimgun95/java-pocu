@@ -35,9 +35,9 @@ public class Comment {
             System.out.print("당신의 댓글이 아닙니다.");
         }
     }
-    public void updateComment(String comment, String userId) {
+    public void updateComment(String text, String userId) {
         if (this.commentId == userId) {
-            this.comment = comment;
+            this.comment = text;
         } else {
             System.out.print("당신의 댓글이 아닙니다.");
         }

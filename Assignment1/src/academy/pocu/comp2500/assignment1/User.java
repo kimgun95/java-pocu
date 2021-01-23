@@ -62,8 +62,8 @@ public class User {
     public ArrayList<Comment> getSubCommentList(Comment comment) {
         return comment.getSubCommentList();
     }
-    public void updateComment(Comment comment, String modified) {
-        comment.updateComment(modified, this.userId);
+    public void updateComment(Comment comment, String text) {
+        comment.updateComment(text, this.userId);
     }
     public void addReaction(Post post, ReactionType reaction) {
         post.addReaction(reaction, this.userId);
