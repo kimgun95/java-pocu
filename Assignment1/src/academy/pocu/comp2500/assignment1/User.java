@@ -16,13 +16,13 @@ public class User {
     public String getUserId() {
         return this.userId;
     }
-    public void addPost(Blog blog, Post post) {
-        if (this.blog == blog) {
-            blog.addPost(post, this.userId);
-        } else {
-            System.out.print("당신은 블로그 주인이 아닙니다.");
-        }
-    }
+    //public void addPost(Blog blog, Post post) {
+    //if (this.blog == blog) {
+            //blog.addPost(post, this.userId);
+        //} else {
+            //System.out.print("당신은 블로그 주인이 아닙니다.");
+        //}
+    //}
     public ArrayList<Post> getPostList(Blog blog) {
         return blog.getPostList();
     }

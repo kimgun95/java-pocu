@@ -31,9 +31,9 @@ public class Post {
     public String getTitle() {
         return this.title;
     }
-    public String getBody() {
-        return this.body;
-    }
+    // public String getBody() {
+        // return this.body;
+    // }
     public OffsetDateTime getCreatedDateTime() {
         return this.createdDateTime;
     }
@@ -93,9 +93,6 @@ public class Post {
                 return c2Vote - c1Vote;
             }
         });
-         // for (Comment comment : this.comments) {
-            // System.out.print(comment.getComment() + System.lineSeparator());
-         // }
         return this.comments;
     }
     public void addReaction(ReactionType reaction, String userId) {

@@ -16,9 +16,9 @@ public class Comment {
         this.commentId = userId;
         this.comment = comment;
     }
-    public String getComment() {
-        return this.comment;
-    }
+    // public String getComment() {
+        // return this.comment;
+    // }
     public String getCommentId() {
         return this.commentId;
     }
@@ -78,9 +78,6 @@ public class Comment {
                 return c2Vote - c1Vote;
             }
         });
-        // for (Comment comment : this.comments) {
-            // System.out.print(comment.getComment() + System.lineSeparator());
-        // }
         return this.comments;
     }
 }

@@ -10,7 +10,7 @@ public class App {
         registry.registerAuthorFilterSetter("User", "setAuthor");
         registry.registerPostOrderSetter("User", "setPostOrder");
         registry.registerPostListGetter("User", "getPostList");
-        registry.registerPostAdder("User", "addPost");
+        registry.registerPostAdder("Blog", "addPost");
         registry.registerPostTitleUpdater("User", "updatePostTitle");
         registry.registerPostBodyUpdater("User", "updatePostBody");
         registry.registerPostTagAdder("User", "addPostTag");

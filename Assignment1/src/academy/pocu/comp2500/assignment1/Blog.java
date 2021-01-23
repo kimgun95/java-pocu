@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-
-
 public class Blog {
     private ArrayList<Post> posts = new ArrayList<>();
     private String tag;
@@ -20,12 +18,8 @@ public class Blog {
         this.author = null;
         this.blogId = userId;
     }
-    public void addPost(Post post, String userId) {
-        if (post.getPostId() == userId) {
-            this.posts.add(post);
-        } else {
-            System.out.print("당신의 글이 아닙니다.");
-        }
+    public void addPost(Post post) {
+        this.posts.add(post);
     }
     public ArrayList<Post> getPostList() {
         if (sortingType == Sorting.CREATEDFAST) {
