@@ -17,13 +17,13 @@ public class Post {
     private String postId;
     private Reaction reaction;
 
-    public Post(String title, String body, String userId) {
+    public Post(String title, String body, String author) {
         this.title = title;
-        this.author = userId;
+        this.author = author;
         this.body = body;
         this.createdDateTime = OffsetDateTime.now();
         this.modifiedDateTime = OffsetDateTime.now();
-        this.postId = userId;
+        this.postId = author;
         this.tags = new ArrayList<>();
         this.comments = new ArrayList<>();
         this.reaction = new Reaction();
