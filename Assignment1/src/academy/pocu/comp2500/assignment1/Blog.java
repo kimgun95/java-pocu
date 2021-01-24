@@ -24,59 +24,15 @@ public class Blog {
     }
     public ArrayList<Post> getPostList() {
         if (sortingType == Sorting.CREATEDFAST) {
-            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, new Comparator<Post>() {
-                @Override
-                public int compare(Post post, Post postId) {
-                    OffsetDateTime time1 = post.getCreatedDateTime();
-                    OffsetDateTime time2 = postId.getCreatedDateTime();
-
-                    return time1.compareTo(time2);
-                }
-            });
+            Collections.sort(this.posts, (p1, p2) -> p1.getCreatedDateTime().compareTo(p2.getCreatedDateTime()));
         } else if (sortingType == Sorting.MODIFIEDLATE) {
-            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, new Comparator<Post>() {
-                @Override
-                public int compare(Post post, Post postId) {
-                    OffsetDateTime time1 = post.getModifiedDateTime();
-                    OffsetDateTime time2 = postId.getModifiedDateTime();
-                    // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-                    return time2.compareTo(time1);
-                }
-            });
+            Collections.sort(this.posts, (p1, p2) -> p2.getModifiedDateTime().compareTo(p1.getModifiedDateTime()));
         } else if (sortingType == Sorting.MODIFIEDFAST) {
-            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, new Comparator<Post>() {
-                @Override
-                public int compare(Post post, Post postId) {
-                    OffsetDateTime time1 = post.getModifiedDateTime();
-                    OffsetDateTime time2 = postId.getModifiedDateTime();
-                    // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-                    return time1.compareTo(time2);
-                }
-            });
+            Collections.sort(this.posts, (p1, p2) -> p1.getModifiedDateTime().compareTo(p2.getModifiedDateTime()));
         } else if (sortingType == Sorting.POSTTITLE) {
-            // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));
-            Collections.sort(this.posts, new Comparator<Post>() {
-                @Override
-                public int compare(Post post, Post postId) {
-                    String title1 = post.getTitle();
-                    String title2 = postId.getTitle();
-
-                    return title1.compareTo(title2);
-                }
-            });
+            Collections.sort(this.posts, (p1, p2) -> p1.getTitle().compareTo(p2.getTitle()));
         } else {
-            Collections.sort(this.posts, new Comparator<Post>() {
-                @Override
-                public int compare(Post post, Post postId) {
-                    OffsetDateTime time1 = post.getCreatedDateTime();
-                    OffsetDateTime time2 = postId.getCreatedDateTime();
-                    // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-                    return time2.compareTo(time1);
-                }
-            });
+            Collections.sort(this.posts, (p1, p2) -> p2.getCreatedDateTime().compareTo(p1.getCreatedDateTime()));
         }
 
 //        ArrayList<Post> returnPost = new ArrayList<>();
