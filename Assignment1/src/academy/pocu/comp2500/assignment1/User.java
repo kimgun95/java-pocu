@@ -16,23 +16,6 @@ public class User {
     public String getUserId() {
         return this.userId;
     }
-
-    public void setTag(Blog blog, String tag) {
-        blog.setTag(tag);
-    }
-    public void setAuthor(Blog blog, String author) {
-        blog.setAuthor(author);
-    }
-    public void setPostOrder(Blog blog, Sorting sortingType) {
-        blog.setPostOrder(sortingType);
-    }
-
-    public void addPostTag(Post post, String tag) {
-        post.addPostTag(tag, this.userId);
-    }
-    public void addComment(Post post, Comment comment) {
-        post.addComment(comment, this.userId);
-    }
     public ArrayList<Comment> getCommentList(Post post) {
         return post.getCommentList();
     }
@@ -42,14 +25,8 @@ public class User {
     public void commentDownvoter(Comment comment) {
         comment.commentDownvoter(this.userId);
     }
-    public void addSubcomment(Comment comment, Comment subcomment) {
-        comment.addSubcomment(subcomment, this.userId);
-    }
     public ArrayList<Comment> getSubCommentList(Comment comment) {
         return comment.getSubCommentList();
-    }
-    public void updateComment(Comment comment, String text) {
-        comment.updateComment(text, this.userId);
     }
     public void addReaction(Post post, ReactionType reaction) {
         post.addReaction(reaction, this.userId);

@@ -6,18 +6,18 @@ public class App {
     public App(Registry registry) {
         // Register like this
         registry.registerBlogCreator("User");
-        registry.registerTagFilterSetter("User", "setTag");
-        registry.registerAuthorFilterSetter("User", "setAuthor");
-        registry.registerPostOrderSetter("User", "setPostOrder");
+        registry.registerTagFilterSetter("Blog", "setTag");
+        registry.registerAuthorFilterSetter("Blog", "setAuthor");
+        registry.registerPostOrderSetter("Blog", "setPostOrder");
         registry.registerPostListGetter("Blog", "getPostList");
         registry.registerPostAdder("Blog", "addPost");
         registry.registerPostTitleUpdater("Blog", "updatePostTitle");
         registry.registerPostBodyUpdater("Blog", "updatePostBody");
-        registry.registerPostTagAdder("User", "addPostTag");
-        registry.registerCommentAdder("User", "addComment");
-        registry.registerSubcommentAdder("User", "addSubcomment");
-        registry.registerCommentUpdater("User", "updateComment");
-        registry.registerSubcommentUpdater("User", "updateComment");
+        registry.registerPostTagAdder("Post", "addPostTag");
+        registry.registerCommentAdder("Post", "addComment");
+        registry.registerSubcommentAdder("Comment", "addSubcomment");
+        registry.registerCommentUpdater("Comment", "updateComment");
+        registry.registerSubcommentUpdater("Comment", "updateComment");
         registry.registerReactionAdder("User", "addReaction");
         registry.registerReactionRemover("User", "removeReaction");
         registry.registerCommentUpvoter("User", "commentUpvoter");

@@ -22,14 +22,6 @@ public class Blog {
     public void addPost(Post post) {
         this.posts.add(post);
     }
-    public Post getPost(Post post) {
-        for (Post pst : this.posts) {
-            if (post == pst) {
-                return pst;
-            }
-        }
-        return null;
-    }
     public ArrayList<Post> getPostList() {
         if (sortingType == Sorting.CREATEDFAST) {
             // System.out.print(String.format("%d%s", sortingType, System.lineSeparator()));

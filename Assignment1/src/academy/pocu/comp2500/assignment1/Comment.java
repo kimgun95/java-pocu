@@ -1,13 +1,12 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class Comment {
     private String comment;
-    private ArrayList<Comment> comments;
+    private ArrayList<Comment> subcomments;
     private ArrayList<String> userIdUpvote;
     private ArrayList<String> userIdDownvote;
     private String commentId;
@@ -15,7 +14,7 @@ public class Comment {
     public Comment(String comment, String userId) {
         this.commentId = userId;
         this.comment = comment;
-        this.comments = new ArrayList<>();
+        this.subcomments = new ArrayList<>();
         this.userIdUpvote = new ArrayList<>();
         this.userIdDownvote = new ArrayList<>();
     }
@@ -31,18 +30,12 @@ public class Comment {
     public ArrayList<String> getUserIdDownvote() {
         return this.userIdDownvote;
     }
-    public void addSubcomment(Comment comment, String userId) {
-        if (comment.getCommentId() == userId) {
-            this.comments.add(comment);
-        } else {
-            System.out.print("당신의 댓글이 아닙니다.");
-        }
+    public void addSubcomment(Comment comment) {
+        this.subcomments.add(comment);
     }
     public void updateComment(String text, String userId) {
         if (this.commentId == userId) {
             this.comment = text;
-        } else {
-            System.out.print("당신의 댓글이 아닙니다.");
         }
     }
     public void commentUpvoter(String userId) {
@@ -66,7 +59,7 @@ public class Comment {
         }
     }
     public ArrayList<Comment> getSubCommentList() {
-        Collections.sort(this.comments, new Comparator<Comment>() {
+        Collections.sort(this.subcomments, new Comparator<Comment>() {
             @Override
             public int compare(Comment comment, Comment commentId) {
                 ArrayList<String> c1UserUpvote = comment.getUserIdUpvote();
@@ -81,6 +74,6 @@ public class Comment {
                 return c2Vote - c1Vote;
             }
         });
-        return this.comments;
+        return this.subcomments;
     }
 }

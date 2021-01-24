@@ -53,8 +53,6 @@ public class Post {
     public void addPostTag(String tag, String userId) {
         if (this.postId == userId) {
             this.tags.add(tag);
-        } else {
-            System.out.print("당신은 글의 주인이 아닙니다.");
         }
     }
     public void updatePostTitle(String title, String userId) {
@@ -69,12 +67,8 @@ public class Post {
             this.modifiedDateTime = OffsetDateTime.now();
         }
     }
-    public void addComment(Comment comment, String userId) {
-        if (comment.getCommentId() == userId) {
-            this.comments.add(comment);
-        } else {
-            System.out.print("당신은 댓글의 주인이 아닙니다.");
-        }
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
     }
     public ArrayList<Comment> getCommentList() {
         Collections.sort(this.comments, new Comparator<Comment>() {
