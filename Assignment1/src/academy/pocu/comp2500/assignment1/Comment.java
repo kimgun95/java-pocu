@@ -59,21 +59,7 @@ public class Comment {
         }
     }
     public ArrayList<Comment> getSubCommentList() {
-        Collections.sort(this.subcomments, new Comparator<Comment>() {
-            @Override
-            public int compare(Comment comment, Comment commentId) {
-                ArrayList<String> c1UserUpvote = comment.getUserIdUpvote();
-                ArrayList<String> c1UserIdDownvote = comment.getUserIdDownvote();
-                ArrayList<String> c2UserUpvote = commentId.getUserIdUpvote();
-                ArrayList<String> c2UserIdDownvote = commentId.getUserIdDownvote();
-
-                int c1Vote = c1UserUpvote.size() - c1UserIdDownvote.size();
-                int c2Vote = c2UserUpvote.size() - c2UserIdDownvote.size();
-
-                // System.out.print(String.format("%s%s", time2.compareTo(time1), System.lineSeparator()));
-                return c2Vote - c1Vote;
-            }
-        });
+        Collections.sort(this.subcomments, (c1, c2) -> (c2.getUserIdUpvote().size() - c2.getUserIdDownvote().size()) - (c1.getUserIdUpvote().size() - c1.getUserIdDownvote().size()));
         return this.subcomments;
     }
 }
