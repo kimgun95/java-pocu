@@ -84,7 +84,7 @@ public class MemoryCache {
             }
         }
     }
-    public static void setEvictionPolicy(EvictionPolicy evictPolicy) {
+    public void setEvictionPolicy(EvictionPolicy evictPolicy) {
         evictionPolicy = evictPolicy;
     }
     public void addEntry(String key, String value) {
