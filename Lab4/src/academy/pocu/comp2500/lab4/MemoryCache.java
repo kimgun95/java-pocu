@@ -1,6 +1,8 @@
 package academy.pocu.comp2500.lab4;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 
 public class MemoryCache {
     private static HashMap<String, MemoryCache> instance = new HashMap<String, MemoryCache>();
