@@ -54,12 +54,12 @@ public class MemoryCache {
         //System.out.println("FIFO" + instanceLinkedList);
         return instance.get(hardDiskName);
     }
-    public void clear() {
+    public static void clear() {
         instance.clear();
         instanceLinkedList.clear();
         instanceLinkedHastSet.clear();
     }
-    public void setMaxInstanceCount(int size) {
+    public static void setMaxInstanceCount(int size) {
         memoryCacheMaxSize = size;
         while (memoryCacheMaxSize < instance.size()) {
             if (evictionPolicy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
@@ -84,7 +84,7 @@ public class MemoryCache {
             }
         }
     }
-    public void setEvictionPolicy(EvictionPolicy evictPolicy) {
+    public static void setEvictionPolicy(EvictionPolicy evictPolicy) {
         evictionPolicy = evictPolicy;
     }
     public void addEntry(String key, String value) {
