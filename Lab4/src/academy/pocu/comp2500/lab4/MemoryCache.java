@@ -9,7 +9,7 @@ public class MemoryCache {
     // 무조건 입력 순서대로
     private static LinkedList<String> instanceLinkedList = new LinkedList<>();
     // 무조건 수정 순서대로
-    private static LinkedHashSet<String> instanceLinkedHastSet = new LinkedHashSet<>();
+    private static LinkedHashSet<String> instanceLinkedHashSet = new LinkedHashSet<>();
     private static int memoryCacheMaxSize = 10;
     private static EvictionPolicy evictionPolicy = EvictionPolicy.LEAST_RECENTLY_USED;
     private HashMap<String, String> entry = new HashMap<>();
@@ -24,31 +24,31 @@ public class MemoryCache {
             if (MemoryCache.memoryCacheMaxSize == instance.size()) {
                 if (evictionPolicy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
                     instance.remove(instanceLinkedList.getFirst());
-                    instanceLinkedHastSet.remove(instanceLinkedList.getFirst());
+                    instanceLinkedHashSet.remove(instanceLinkedList.getFirst());
                     instanceLinkedList.remove(0);
                 } else if (evictionPolicy == EvictionPolicy.LAST_IN_FIRST_OUT) {
                     instance.remove(instanceLinkedList.getLast());
-                    instanceLinkedHastSet.remove(instanceLinkedList.getLast());
+                    instanceLinkedHashSet.remove(instanceLinkedList.getLast());
                     instanceLinkedList.remove(instanceLinkedList.size() - 1);
                 } else {
-                    instance.remove(instanceLinkedHastSet.iterator().next());
+                    instance.remove(instanceLinkedHashSet.iterator().next());
                     int cnt = 0;
                     for (String str : instanceLinkedList) {
-                        if (str.equals(instanceLinkedHastSet.iterator().next())) {
+                        if (str.equals(instanceLinkedHashSet.iterator().next())) {
                             instanceLinkedList.remove(cnt);
                             break;
                         }
                         cnt += 1;
                     }
-                    instanceLinkedHastSet.remove(instanceLinkedHastSet.iterator().next());
+                    instanceLinkedHashSet.remove(instanceLinkedHashSet.iterator().next());
                 }
             }
             instance.put(hardDiskName, new MemoryCache());
             instanceLinkedList.add(hardDiskName);
         } else {
-            instanceLinkedHastSet.remove(hardDiskName);
+            instanceLinkedHashSet.remove(hardDiskName);
         }
-        instanceLinkedHastSet.add(hardDiskName);
+        instanceLinkedHashSet.add(hardDiskName);
         //System.out.println("inst" + instance);
         //System.out.println("LRU" + instanceLinkedHastSet);
         //System.out.println("FIFO" + instanceLinkedList);
@@ -57,30 +57,30 @@ public class MemoryCache {
     public static void clear() {
         instance.clear();
         instanceLinkedList.clear();
-        instanceLinkedHastSet.clear();
+        instanceLinkedHashSet.clear();
     }
     public static void setMaxInstanceCount(int size) {
         memoryCacheMaxSize = size;
         while (memoryCacheMaxSize < instance.size()) {
             if (evictionPolicy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
                 instance.remove(instanceLinkedList.getFirst());
-                instanceLinkedHastSet.remove(instanceLinkedList.getFirst());
+                instanceLinkedHashSet.remove(instanceLinkedList.getFirst());
                 instanceLinkedList.remove(0);
             } else if (evictionPolicy == EvictionPolicy.LAST_IN_FIRST_OUT) {
                 instance.remove(instanceLinkedList.getLast());
-                instanceLinkedHastSet.remove(instanceLinkedList.getLast());
+                instanceLinkedHashSet.remove(instanceLinkedList.getLast());
                 instanceLinkedList.remove(instanceLinkedList.size() - 1);
             } else {
-                instance.remove(instanceLinkedHastSet.iterator().next());
+                instance.remove(instanceLinkedHashSet.iterator().next());
                 int cnt = 0;
                 for (String str : instanceLinkedList) {
-                    if (str.equals(instanceLinkedHastSet.iterator().next())) {
+                    if (str.equals(instanceLinkedHashSet.iterator().next())) {
                         instanceLinkedList.remove(cnt);
                         break;
                     }
                     cnt += 1;
                 }
-                instanceLinkedHastSet.remove(instanceLinkedHastSet.iterator().next());
+                instanceLinkedHashSet.remove(instanceLinkedHashSet.iterator().next());
             }
         }
     }
