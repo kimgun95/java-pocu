@@ -10,12 +10,12 @@ public class MemoryCache {
     private static LinkedList<String> instanceLinkedList = new LinkedList<>();
     // 무조건 수정 순서대로
     private static LinkedHashSet<String> instanceLinkedHashSet = new LinkedHashSet<>();
-    private static int memoryCacheMaxSize = 10;
+    private static int memoryCacheMaxSize = 1000000;
     private static EvictionPolicy evictionPolicy = EvictionPolicy.LEAST_RECENTLY_USED;
     private HashMap<String, String> entry = new HashMap<>();
     private LinkedList<String> entryLinkedList = new LinkedList<>();
     private LinkedHashSet<String> entryLinkedHashSet = new LinkedHashSet<>();
-    private int entryMaxSize = 10;
+    private int entryMaxSize = 1000000;
 
     private MemoryCache() {
     }
