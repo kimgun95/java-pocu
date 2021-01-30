@@ -62,15 +62,15 @@ public class MemoryCache {
     public static void setMaxInstanceCount(int size) {
         memoryCacheMaxSize = size;
         while (memoryCacheMaxSize < instance.size()) {
-            if (evictionPolicy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
-                instance.remove(instanceLinkedList.getFirst());
-                instanceLinkedHashSet.remove(instanceLinkedList.getFirst());
-                instanceLinkedList.remove(0);
-            } else if (evictionPolicy == EvictionPolicy.LAST_IN_FIRST_OUT) {
-                instance.remove(instanceLinkedList.getLast());
-                instanceLinkedHashSet.remove(instanceLinkedList.getLast());
-                instanceLinkedList.remove(instanceLinkedList.size() - 1);
-            } else {
+//            if (evictionPolicy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
+//                instance.remove(instanceLinkedList.getFirst());
+//                instanceLinkedHashSet.remove(instanceLinkedList.getFirst());
+//                instanceLinkedList.remove(0);
+//            } else if (evictionPolicy == EvictionPolicy.LAST_IN_FIRST_OUT) {
+//                instance.remove(instanceLinkedList.getLast());
+//                instanceLinkedHashSet.remove(instanceLinkedList.getLast());
+//                instanceLinkedList.remove(instanceLinkedList.size() - 1);
+//            } else {
                 instance.remove(instanceLinkedHashSet.iterator().next());
                 int cnt = 0;
                 for (String str : instanceLinkedList) {
@@ -81,7 +81,7 @@ public class MemoryCache {
                     cnt += 1;
                 }
                 instanceLinkedHashSet.remove(instanceLinkedHashSet.iterator().next());
-            }
+//            }
         }
     }
     public void setEvictionPolicy(EvictionPolicy evictPolicy) {
