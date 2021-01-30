@@ -71,16 +71,16 @@ public class MemoryCache {
 //                instanceLinkedHashSet.remove(instanceLinkedList.getLast());
 //                instanceLinkedList.remove(instanceLinkedList.size() - 1);
 //            } else {
-                instance.remove(instanceLinkedHashSet.iterator().next());
-                int cnt = 0;
-                for (String str : instanceLinkedList) {
-                    if (str.equals(instanceLinkedHashSet.iterator().next())) {
-                        instanceLinkedList.remove(cnt);
-                        break;
-                    }
-                    cnt += 1;
+            instance.remove(instanceLinkedHashSet.iterator().next());
+            int cnt = 0;
+            for (String str : instanceLinkedList) {
+                if (str.equals(instanceLinkedHashSet.iterator().next())) {
+                    instanceLinkedList.remove(cnt);
+                    break;
                 }
-                instanceLinkedHashSet.remove(instanceLinkedHashSet.iterator().next());
+                cnt += 1;
+            }
+            instanceLinkedHashSet.remove(instanceLinkedHashSet.iterator().next());
 //            }
         }
     }
