@@ -55,6 +55,7 @@ public class MemoryCache {
         return instance.get(hardDiskName);
     }
     public static void clear() {
+        evictionPolicy = EvictionPolicy.LEAST_RECENTLY_USED;
         instance.clear();
         instanceLinkedList.clear();
         instanceLinkedHashSet.clear();
