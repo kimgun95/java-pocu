@@ -21,7 +21,7 @@ public class MemoryCache {
     }
     public static MemoryCache getInstance(String hardDiskName) {
         if (!instance.containsKey(hardDiskName)) {
-            if (MemoryCache.memoryCacheMaxSize == instance.size()) {
+            while (MemoryCache.memoryCacheMaxSize <= instance.size()) {
                 if (evictionPolicy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
                     instance.remove(instanceLinkedList.getFirst());
                     instanceLinkedHashSet.remove(instanceLinkedList.getFirst());
