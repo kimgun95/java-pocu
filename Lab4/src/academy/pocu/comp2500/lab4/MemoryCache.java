@@ -89,7 +89,7 @@ public class MemoryCache {
     }
     public void addEntry(String key, String value) {
         if (!this.entry.containsKey(key)) {
-            if (entryMaxSize == entry.size()) {
+            while (entryMaxSize <= entry.size()) {
                 if (evictionPolicy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
                     entry.remove(entryLinkedList.getFirst());
                     entryLinkedHashSet.remove(entryLinkedList.getFirst());
