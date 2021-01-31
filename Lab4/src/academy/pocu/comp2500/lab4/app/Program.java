@@ -1,48 +1,175 @@
 package academy.pocu.comp2500.lab4.app;
 
+import academy.pocu.comp2500.lab4.EvictionPolicy;
 import academy.pocu.comp2500.lab4.MemoryCache;
 
 public class Program {
 
     public static void main(String[] args) {
-        MemoryCache memCacheA = MemoryCache.getInstance("A");
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            System.out.print("error");
-        }
-        MemoryCache memCacheB = MemoryCache.getInstance("B");
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            System.out.print("error");
-        }
-        MemoryCache memCacheC = MemoryCache.getInstance("C");
+//        MemoryCache memCacheA = MemoryCache.getInstance("A");
+//        MemoryCache memCacheB = MemoryCache.getInstance("B");
+//        MemoryCache memCacheC = MemoryCache.getInstance("C");
+//
+//        memCacheA.setEvictionPolicy(EvictionPolicy.FIRST_IN_FIRST_OUT);
+//
+//        memCacheB.getEvictionPolicy();
+//        MemoryCache.clear();
+//        memCacheA.getEvictionPolicy();
 
-        assert memCacheA == MemoryCache.getInstance("A");
-        assert memCacheB == MemoryCache.getInstance("B");
-        assert memCacheC == MemoryCache.getInstance("C");
+//        memCacheC.setEvictionPolicy(EvictionPolicy.LAST_IN_FIRST_OUT);
+//        memCacheA.getEvictionPolicy();
 
-//        memCacheA.clear();
-//        memCacheA = MemoryCache.getInstance("A");
+
+//        assert (memCacheA != memCacheB) && memCacheA != memCacheC;
+//        assert memCacheB != memCacheC;
+//
+//        MemoryCache memCacheA = MemoryCache.getInstance("A");
+//        MemoryCache memCacheB = MemoryCache.getInstance("B");
+//        MemoryCache memCacheC = MemoryCache.getInstance("C");
+//
+//        MemoryCache.clear();
+//        assert (memCacheA != MemoryCache.getInstance("A"));
+//        assert (memCacheB != MemoryCache.getInstance("B"));
+//        assert (memCacheC != MemoryCache.getInstance("C"));
+//
+//        MemoryCache memCacheA = MemoryCache.getInstance("A");
+//        MemoryCache memCacheB = MemoryCache.getInstance("B");
+//        MemoryCache memCacheC = MemoryCache.getInstance("C");
+//        MemoryCache.setMaxInstanceCount(3);
+//        MemoryCache memCacheD = MemoryCache.getInstance("D"); // memCacheA가 제거됨
+//        //memCacheA = null;
+//        assert (memCacheA != MemoryCache.getInstance("A"));
+//
+//
+//        MemoryCache.clear();
+//        MemoryCache.setMaxInstanceCount(5); // 여기 삭제하고도 잘 작동하는지??
+//
+//        MemoryCache memCacheA = MemoryCache.getInstance("A");
+//        MemoryCache memCacheB = MemoryCache.getInstance("B");
+//        MemoryCache memCacheC = MemoryCache.getInstance("C");
+//        MemoryCache memCacheD = MemoryCache.getInstance("D");
+//        MemoryCache memCacheE = MemoryCache.getInstance("E");
+//
+//
+//        assert memCacheA != null;
+//        assert memCacheB != null;
+//        assert memCacheC != null;
+//        assert memCacheD != null;
+//        assert memCacheE != null;
+//
 //        assert memCacheA == MemoryCache.getInstance("A");
+//        assert memCacheB == MemoryCache.getInstance("B");
+//        assert memCacheC == MemoryCache.getInstance("C");
+//        assert memCacheD == MemoryCache.getInstance("D");
+//        assert memCacheE == MemoryCache.getInstance("E");
+//
+//        memCacheA.addEntry("test", "test");
+//        assert memCacheA.getEntryOrNull("test").equals("test");
+//        memCacheA.addEntry("test", "test2");
+//        assert memCacheA.getEntryOrNull("test").equals("test2");
+//
+//        memCacheB.addEntry("test", "test");
+//        assert memCacheB.getEntryOrNull("test").equals("test");
+//
+//        MemoryCache.setMaxInstanceCount(3);
+//
+//        assert memCacheC == MemoryCache.getInstance("C");
+//        assert memCacheD == MemoryCache.getInstance("D");
+//        assert memCacheE == MemoryCache.getInstance("E");
+//        assert memCacheA != MemoryCache.getInstance("A");
+//        assert memCacheB != MemoryCache.getInstance("B");
+//
+//        memCacheA = MemoryCache.getInstance("A");
+//        memCacheB = MemoryCache.getInstance("B");
+//        assert memCacheA.getEntryOrNull("test") == null;
+//        assert memCacheB.getEntryOrNull("test") == null;
+//
+//        MemoryCache.clear();
 
-        memCacheA.setMaxInstanceCount(3);
 
-        MemoryCache memCacheD = MemoryCache.getInstance("D");
+
+
+//        MemoryCache memCacheA = MemoryCache.getInstance("A");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
+//        MemoryCache memCacheB = MemoryCache.getInstance("B");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
+//        MemoryCache memCacheC = MemoryCache.getInstance("C");
+//
+//        assert memCacheA == MemoryCache.getInstance("A");
+//        assert memCacheB == MemoryCache.getInstance("B");
+//        assert memCacheC == MemoryCache.getInstance("C");
+//
+//        memCacheA.setMaxInstanceCount(3);
+//
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
+//        MemoryCache memCacheD = MemoryCache.getInstance("D");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
 //
 //        assert memCacheA != MemoryCache.getInstance("A");
-//        assert memCacheC == MemoryCache.getInstance("C");
-//        assert memCacheB != MemoryCache.getInstance("B");
-//        assert memCacheD != MemoryCache.get Instance("D");
-//    }
 //
-//    {
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
+//        assert memCacheC == MemoryCache.getInstance("C");
+//
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
+//        assert memCacheB != MemoryCache.getInstance("B");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
+//        assert memCacheD != MemoryCache.getInstance("D");
+//
+//        memCacheA.clear();
+//
 //        MemoryCache memCache = MemoryCache.getInstance("A");
 //        memCache.addEntry("key1", "value1");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
 //        memCache.addEntry("key2", "value2");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
 //        memCache.addEntry("key3", "value3");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
 //        memCache.addEntry("key4", "value4");
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            System.out.print("error");
+//        }
 //        memCache.addEntry("key5", "value5");
 //
 //        memCache.setMaxEntryCount(3);
