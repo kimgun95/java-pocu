@@ -1,21 +1,23 @@
 public class Person {
-    private int age;
-    private String name;
+    private String firstName;
+    private String lastName;
+    protected String email;
 
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = Math.max(0, age);
-    }
-    public String getName() {
-        return this.name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void punch(Person enemy) {
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
 
+        this.email = String.format("%c%s@naver.com",
+                firstName.toLowerCase().charAt(0), lastName.toLowerCase());
     }
-    public void pat(Dog dog) {
-
+    public String getFullName() {
+        return String.format("%s %s", firstName, lastName);
+    }
+    public void changeName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    public String getEmail() {
+        return this.email;
     }
 }
