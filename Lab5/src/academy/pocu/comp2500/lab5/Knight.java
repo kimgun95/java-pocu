@@ -14,6 +14,12 @@ public class Knight extends Gladiator {
         this.pet = pet;
     }
     public void attackTogether(Barbarian enemy) {
+        if (super.hp <= 0) {
+            return;
+        }
+        if (super.name.equals(enemy.name)) {
+            return;
+        }
         if (this.pet == null) {
             return;
         }
@@ -21,6 +27,10 @@ public class Knight extends Gladiator {
         if (damage < 1) {
             damage = 1;
         }
-        enemy.hp -= damage;
+        if (enemy.hp < damage) {
+            enemy.hp = 0;
+        } else {
+            enemy.hp -= damage;
+        }
     }
 }

@@ -31,7 +31,12 @@ public class Gladiator extends Barbarian {
         return false;
     }
     public void attack(String attackMoveName, Barbarian enemy) {
-
+        if (super.hp <= 0) {
+            return;
+        }
+        if (super.name.equals(enemy.name)) {
+            return;
+        }
         for (Move move : this.attackMove) {
 
             if (move.getAttackMoveName().equals(attackMoveName)) {
@@ -44,8 +49,12 @@ public class Gladiator extends Barbarian {
                 }
 //                System.out.println(super.attack + " " + enemy.defense + " " + move.getAttackMovePower());
 //                System.out.println((double) super.attack / (double) enemy.defense * (double) move.getAttackMovePower());
-                enemy.hp -= damage;
                 move.setCurrentCountPower(-1);
+                if (enemy.hp < damage) {
+                    enemy.hp = 0;
+                } else {
+                    enemy.hp -= damage;
+                }
                 return;
             }
         }
@@ -53,6 +62,9 @@ public class Gladiator extends Barbarian {
     }
     public void rest() {
         super.hp += 10;
+        if (super.maxHp < super.hp) {
+            super.hp = super.maxHp;
+        }
         for (Move move : this.attackMove) {
             if (move.getCurrentCountPower() < move.getMaxCountPower()) {
                 move.setCurrentCountPower(1);
