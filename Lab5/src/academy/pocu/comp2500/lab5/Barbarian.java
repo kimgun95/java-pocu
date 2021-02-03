@@ -16,7 +16,7 @@ public class Barbarian {
         return this.hp;
     }
     public void attack(Barbarian enemy) {
-        int damage = (int) ((this.attack - enemy.defense) / 2);
+        int damage = (int) (((double) this.attack - (double) enemy.defense) / (double) 2);
         if (damage < 1) {
             damage = 1;
         }
