@@ -4,23 +4,23 @@ import java.util.ArrayList;
 
 public class SetMenu extends Menu {
     protected ArrayList<Appetizer> appetizers;
-    protected MainCourse mainCourse;
+    protected ArrayList<MainCourse> mainCourses;
     protected ArrayList<Dessert> desserts;
 
     protected SetMenu(int price) {
         super(price);
         appetizers = new ArrayList<>();
         desserts = new ArrayList<>();
-        mainCourse = null;
+        mainCourses = new ArrayList<>();
     }
     public ArrayList<Appetizer> getAppetizers() {
         assert (this.appetizers != null) : "call isValid() first!";
         return this.appetizers;
     }
 
-    public MainCourse getMainCourse() {
-        assert (this.mainCourse != null) : "call isValid() first!";
-        return this.mainCourse;
+    public ArrayList<MainCourse> getMainCourse() {
+        assert (this.mainCourses != null) : "call isValid() first!";
+        return this.mainCourses;
     }
 
     public ArrayList<Dessert> getDesserts() {

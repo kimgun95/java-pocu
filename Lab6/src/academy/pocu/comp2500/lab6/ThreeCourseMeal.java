@@ -11,11 +11,12 @@ public class ThreeCourseMeal extends SetMenu {
     }
 
     public boolean isValid() {
-        return this.appetizers.size() == 1 && this.mainCourse != null && this.desserts.size() == 1;
+        return this.appetizers.size() == 1 && this.mainCourses.size() == 1 && this.desserts.size() == 1;
     }
 
     public void setMainCourse(MainCourse mainCourse) {
-        this.mainCourse = mainCourse;
+        this.mainCourses.clear();
+        this.mainCourses.add(mainCourse);
     }
 
     public void setAppetizer(Appetizer appetizer) {
