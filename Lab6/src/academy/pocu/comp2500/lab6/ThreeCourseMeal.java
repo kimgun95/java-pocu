@@ -6,7 +6,6 @@ public class ThreeCourseMeal extends SetMenu {
     private static final int PRICE = 25;
 
 //    에피타이저, 메인, 디저트 1개씩
-
     public ThreeCourseMeal() {
         super(PRICE);
     }

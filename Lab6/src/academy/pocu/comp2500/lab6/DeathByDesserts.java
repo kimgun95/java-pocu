@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DeathByDesserts extends SetMenu {
     private static final int PRICE = 20;
 
-//    디저트 4개
+    // 디저트 4개
     private boolean isValid;
 
     public DeathByDesserts() {
