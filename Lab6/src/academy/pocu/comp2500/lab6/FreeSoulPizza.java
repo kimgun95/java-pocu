@@ -1,11 +1,6 @@
 package academy.pocu.comp2500.lab6;
 
 public class FreeSoulPizza extends Pizza {
-    private static final int MAX_VEGGIE_COUNT = 2;
-
-    private int veggieCount;
-
-    private boolean isCheeseAdded;
 
     public FreeSoulPizza() {
         super(25);

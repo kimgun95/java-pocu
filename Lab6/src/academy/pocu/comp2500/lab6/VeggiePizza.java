@@ -1,9 +1,6 @@
 package academy.pocu.comp2500.lab6;
 
 public class VeggiePizza extends Pizza {
-    private static final int MAX_CHEESE_COUNT = 2;
-
-    private int cheeseCount;
 
     public VeggiePizza() {
         super(17);

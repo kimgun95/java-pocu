@@ -3,12 +3,12 @@ package academy.pocu.comp2500.lab6;
 import java.util.ArrayList;
 
 public class Menu {
-    protected static int PRICE;
+    protected int price;
 
     protected Menu(int price) {
-        PRICE = price;
+        this.price = price;
     }
     public int getPrice() {
-        return PRICE;
+        return this.price;
     }
 }

@@ -2,8 +2,6 @@ package academy.pocu.comp2500.lab6;
 
 public class MeatLoverPizza extends Pizza {
 
-    private boolean isVeggieAdded;
-
     public MeatLoverPizza() {
         super(21);
         super.toppings.add(Topping.BACON);
