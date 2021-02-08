@@ -1,12 +1,11 @@
 package academy.pocu.comp2500.lab6;
 
 public class MeatLoverPizza extends Pizza {
-    private static final int PRICE = 21;
 
     private boolean isVeggieAdded;
 
     public MeatLoverPizza() {
-        super(PRICE);
+        super(21);
         super.toppings.add(Topping.BACON);
         super.toppings.add(Topping.PEPERONI);
         super.toppings.add(Topping.HAM);
