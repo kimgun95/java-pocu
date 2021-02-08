@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class NoHeavyMeal extends SetMenu {
     private static final int PRICE = 15;
 
-//    에피타이저 2개,  디저트 1개
-
+    // 에피타이저 2개,  디저트 1개
     public NoHeavyMeal() {
         super(PRICE);
     }

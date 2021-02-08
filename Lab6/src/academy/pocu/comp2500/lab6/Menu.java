@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Menu {
     private int price;
 
-    public Menu(int price) {
+    protected Menu(int price) {
         this.price = price;
     }
     public int getPrice() {

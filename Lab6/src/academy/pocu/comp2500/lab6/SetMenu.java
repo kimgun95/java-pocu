@@ -7,7 +7,7 @@ public class SetMenu extends Menu {
     protected MainCourse mainCourse;
     protected ArrayList<Dessert> desserts;
 
-    public SetMenu(int price) {
+    protected SetMenu(int price) {
         super(price);
         appetizers = new ArrayList<>();
         desserts = new ArrayList<>();
