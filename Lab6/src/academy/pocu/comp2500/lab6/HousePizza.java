@@ -10,17 +10,13 @@ public class HousePizza extends Pizza {
         super.toppings.add(Topping.MOZZARELLA_CHEESE);
     }
 
-    public boolean isValid() {
-        return this.meatCount == MAX_MEAT_COUNT;
-    }
-
     public boolean addBacon() {
         if (isValid()) {
             return false;
         }
 
         this.toppings.add(Topping.BACON);
-        ++this.meatCount;
+        ++this.meatCountHousePizza;
         return true;
     }
 
@@ -28,7 +24,7 @@ public class HousePizza extends Pizza {
         boolean isRemoved = this.toppings.remove(Topping.BACON);
 
         if (isRemoved) {
-            --this.meatCount;
+            --this.meatCountHousePizza;
         }
 
         return isRemoved;
@@ -40,7 +36,7 @@ public class HousePizza extends Pizza {
         }
 
         this.toppings.add(Topping.PEPERONI);
-        ++this.meatCount;
+        ++this.meatCountHousePizza;
         return true;
     }
 
@@ -48,7 +44,7 @@ public class HousePizza extends Pizza {
         boolean isRemoved = this.toppings.remove(Topping.PEPERONI);
 
         if (isRemoved) {
-            --this.meatCount;
+            --this.meatCountHousePizza;
         }
 
         return isRemoved;
@@ -60,7 +56,7 @@ public class HousePizza extends Pizza {
         }
 
         this.toppings.add(Topping.SAUSAGES);
-        ++this.meatCount;
+        ++this.meatCountHousePizza;
         return true;
     }
 
@@ -68,7 +64,7 @@ public class HousePizza extends Pizza {
         boolean isRemoved = this.toppings.remove(Topping.SAUSAGES);
 
         if (isRemoved) {
-            --this.meatCount;
+            --this.meatCountHousePizza;
         }
 
         return isRemoved;

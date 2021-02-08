@@ -8,7 +8,8 @@ public class Pizza extends Menu {
     protected static final int MAX_CHEESE_COUNT = 2;
 
     protected ArrayList<Topping> toppings;
-    protected int meatCount;
+    protected int meatCountHousePizza;
+    protected int meatCountFreeSoulPizza;
     protected int veggieCount;
     protected int cheeseCount;
     protected boolean isVeggieAdded;
@@ -20,5 +21,11 @@ public class Pizza extends Menu {
     }
     public ArrayList<Topping> getToppings() {
         return this.toppings;
+    }
+
+    public boolean isValid() {
+        return ((this.meatCountHousePizza == MAX_MEAT_COUNT) || (this.isVeggieAdded) ||
+                (this.meatCountFreeSoulPizza == MAX_MEAT_COUNT && this.veggieCount == MAX_VEGGIE_COUNT
+                        && this.isCheeseAdded) || (this.cheeseCount == MAX_CHEESE_COUNT));
     }
 }
