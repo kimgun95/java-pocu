@@ -13,11 +13,6 @@ public class ThreeCourseMeal extends SetMenu {
         this.mainCourse = mainCourse;
     }
 
-    public MainCourse getMainCourse() {
-        assert (this.mainCourse != null) : "call isValid() first!";
-        return this.mainCourse;
-    }
-
     public void setAppetizer(Appetizer appetizer) {
         this.appetizers.clear();
         this.appetizers.add(appetizer);
