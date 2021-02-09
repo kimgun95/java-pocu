@@ -10,7 +10,7 @@ public class Menu {
     protected static final int MAX_CHEESE_COUNT = 2;
 
     protected ArrayList<Appetizer> appetizers;
-    protected MainCourse mainCourse;
+    protected ArrayList<MainCourse> mainCourses;
     protected ArrayList<Dessert> desserts;
 
     protected boolean isValid;
@@ -27,6 +27,7 @@ public class Menu {
 
         appetizers = new ArrayList<>();
         desserts = new ArrayList<>();
+        mainCourses = new ArrayList<>();
     }
     public int getPrice() {
         return this.price;
@@ -34,7 +35,7 @@ public class Menu {
 
     public boolean isValid() {
         return ((this.appetizers.size() == 2 && this.desserts.size() == 1)
-                || (this.isValid) || (this.appetizers.size() == 1 && this.mainCourse != null && this.desserts.size() == 1)
+                || (this.isValid) || (this.appetizers.size() == 1 && this.mainCourses.size() == 1 && this.desserts.size() == 1)
                 || (this.meatCountHousePizza == MAX_MEAT_COUNT) || (this.isVeggieAdded)
                 || (this.meatCountFreeSoulPizza == MAX_MEAT_COUNT && this.veggieCount == MAX_VEGGIE_COUNT && this.isCheeseAdded)
                 || (this.cheeseCount == MAX_CHEESE_COUNT));

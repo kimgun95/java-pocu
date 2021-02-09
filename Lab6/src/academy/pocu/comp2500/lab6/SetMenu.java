@@ -18,8 +18,8 @@ public class SetMenu extends Menu {
         return this.desserts;
     }
 
-    public MainCourse getMainCourse() {
-//        assert (this.mainCourse != null) : "call isValid() first!";
-        return this.mainCourse;
+    public ArrayList<MainCourse> getMainCourses() {
+        assert (this.mainCourses != null) : "call isValid() first!";
+        return this.mainCourses;
     }
 }
