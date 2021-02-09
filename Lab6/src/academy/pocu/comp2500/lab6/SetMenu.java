@@ -19,7 +19,7 @@ public class SetMenu extends Menu {
     }
 
     public MainCourse getMainCourse() {
-        assert (this.mainCourse != null) : "call isValid() first!";
+//        assert (this.mainCourse != null) : "call isValid() first!";
         return this.mainCourse;
     }
 }
