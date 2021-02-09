@@ -11,10 +11,6 @@ public class MeatLoverPizza extends Pizza {
         super.toppings.add(Topping.CHEDDAR_CHEESE);
     }
 
-    public boolean isValid() {
-        return this.isVeggieAdded;
-    }
-
     public boolean addBlackOlives() {
         if (isValid()) {
             return false;

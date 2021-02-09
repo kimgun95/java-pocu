@@ -4,10 +4,7 @@ import java.util.ArrayList;
 
 public class Pizza extends Menu {
 
-
     protected ArrayList<Topping> toppings;
-
-
 
     protected Pizza(int price) {
         super(price);
