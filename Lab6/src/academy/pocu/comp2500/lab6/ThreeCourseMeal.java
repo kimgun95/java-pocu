@@ -10,8 +10,7 @@ public class ThreeCourseMeal extends SetMenu {
     }
 
     public void setMainCourse(MainCourse mainCourse) {
-        this.mainCourses.clear();
-        this.mainCourses.add(mainCourse);
+        this.mainCourse = mainCourse;
     }
 
     public void setAppetizer(Appetizer appetizer) {
