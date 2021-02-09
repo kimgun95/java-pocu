@@ -10,6 +10,10 @@ public class HousePizza extends Pizza {
         super.toppings.add(Topping.MOZZARELLA_CHEESE);
     }
 
+    public boolean isValid() {
+        return this.meatCountHousePizza == MAX_MEAT_COUNT;
+    }
+
     public boolean addBacon() {
         if (isValid()) {
             return false;

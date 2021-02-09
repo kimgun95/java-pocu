@@ -9,6 +9,10 @@ public class VeggiePizza extends Pizza {
         super.toppings.add(Topping.GREEN_PEPPERS);
     }
 
+    public boolean isValid() {
+        return this.cheeseCount == MAX_CHEESE_COUNT;
+    }
+
     public boolean addMozzarellaCheese() {
         if (isValid()) {
             return false;

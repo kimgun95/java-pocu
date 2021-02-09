@@ -33,11 +33,7 @@ public class Menu {
         return this.price;
     }
 
-    public boolean isValid() {
-        return ((this.appetizers.size() == 2 && this.desserts.size() == 1)
-                || (this.isValid) || (this.appetizers.size() == 1 && this.mainCourses.size() == 1 && this.desserts.size() == 1)
-                || (this.meatCountHousePizza == MAX_MEAT_COUNT) || (this.isVeggieAdded)
-                || (this.meatCountFreeSoulPizza == MAX_MEAT_COUNT && this.veggieCount == MAX_VEGGIE_COUNT && this.isCheeseAdded)
-                || (this.cheeseCount == MAX_CHEESE_COUNT));
+    protected boolean isValid() {
+        return true;
     }
 }

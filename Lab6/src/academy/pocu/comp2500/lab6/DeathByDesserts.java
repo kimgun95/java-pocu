@@ -9,6 +9,10 @@ public class DeathByDesserts extends SetMenu {
         super(20);
     }
 
+    public boolean isValid() {
+        return this.isValid;
+    }
+
     public void setDesserts(Dessert dessert1, Dessert dessert2, Dessert dessert3, Dessert dessert4) {
         this.desserts.clear();
 
