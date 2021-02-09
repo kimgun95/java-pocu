@@ -13,11 +13,6 @@ public class SetMenu extends Menu {
         return this.appetizers;
     }
 
-    public MainCourse getMainCourse() {
-        assert (this.mainCourse != null) : "call isValid() first!";
-        return this.mainCourse;
-    }
-
     public ArrayList<Dessert> getDesserts() {
         assert (this.desserts != null) : "call isValid() first!";
         return this.desserts;
