@@ -9,10 +9,6 @@ public class NoHeavyMeal extends SetMenu {
         super(15);
     }
 
-    public boolean isValid() {
-        return this.appetizers.size() == 2 && this.desserts.size() == 1;
-    }
-
     public void setAppetizers(Appetizer appetizer1, Appetizer appetizer2) {
         this.appetizers.clear();
 

@@ -9,10 +9,6 @@ public class ThreeCourseMeal extends SetMenu {
         super(25);
     }
 
-    public boolean isValid() {
-        return this.appetizers.size() == 1 && this.mainCourses.size() == 1 && this.desserts.size() == 1;
-    }
-
     public void setMainCourse(MainCourse mainCourse) {
         this.mainCourses.clear();
         this.mainCourses.add(mainCourse);

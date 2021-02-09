@@ -4,14 +4,9 @@ import java.util.ArrayList;
 
 public class DeathByDesserts extends SetMenu {
     // 디저트 4개
-    private boolean isValid;
 
     public DeathByDesserts() {
         super(20);
-    }
-
-    public boolean isValid() {
-        return this.isValid;
     }
 
     public void setDesserts(Dessert dessert1, Dessert dessert2, Dessert dessert3, Dessert dessert4) {
