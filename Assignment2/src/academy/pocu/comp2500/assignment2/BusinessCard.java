@@ -9,8 +9,7 @@ public class BusinessCard extends Product {
 
     public BusinessCard(BusinessCardType businessCardType, BusinessCardSides businessCardSides, Size size, int price, BusinessCardColor businessCardColor, Orientation orientation) {
         super(size, price);
-        super.imageAperture = null;
-        super.textAperture = null;
+        super.aperture = new Aperture();
         if (businessCardColor == BusinessCardColor.GRAY) {
             super.color = new Color(0xE6, 0xE6, 0xE6);
         } else if (businessCardColor == BusinessCardColor.IVORY) {
