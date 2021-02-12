@@ -9,6 +9,9 @@ public class Product {
     protected String name;
     protected ShippingMethod shippingMethod;
 
+    private String text = "";
+    private String imagePath = "";
+
     protected Product(Size size, int price) {
         this.size = size;
         this.price = price;
@@ -30,5 +33,23 @@ public class Product {
     }
     public void setShippingMethod(ShippingMethod shippingMethod) {
         this.shippingMethod = shippingMethod;
+    }
+    public void addText(String text) {
+        if (text == null) {
+            this.price += 5;
+        }
+        this.text = text;
+    }
+    public void addImage(String imagePath) {
+        if (text == null) {
+            this.price += 5;
+        }
+        this.imagePath = imagePath;
+    }
+    public String getText() {
+        return this.text;
+    }
+    public String getImagePath() {
+        return this.imagePath;
     }
 }

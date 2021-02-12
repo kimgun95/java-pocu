@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class Banner extends Product {
     private Orientation orientation;
-    private String text = new String();
-    private String imagePath = new String();
 
     public Banner(BannerType bannerType, Size size, int price, BannerColor bannerColor, Orientation orientation) {
         super(size, price);
@@ -29,19 +27,5 @@ public class Banner extends Product {
     }
     public Orientation getOrientation() {
         return this.orientation;
-    }
-    public void addText(String text) {
-        this.text = text;
-        super.price += 5;
-    }
-    public void addImage(String imagePath) {
-        this.imagePath = imagePath;
-        super.price += 5;
-    }
-    public String getText() {
-        return this.text;
-    }
-    public String getImagePath() {
-        return this.imagePath;
     }
 }

@@ -5,8 +5,7 @@ import java.awt.*;
 public class BusinessCard extends Product {
     private BusinessCardSides businessCardSides;
     private Orientation orientation;
-    private String text = "";
-    private String imagePath = "";
+
 
     public BusinessCard(BusinessCardType businessCardType, BusinessCardSides businessCardSides, Size size, int price, BusinessCardColor businessCardColor, Orientation orientation) {
         super(size, price);
@@ -27,24 +26,7 @@ public class BusinessCard extends Product {
         this.businessCardSides = businessCardSides;
         this.orientation = orientation;
     }
-    public void addText(String text) {
-        if (text == null) {
-            super.price += 5;
-        }
-        this.text = text;
-    }
-    public void addImage(String imagePath) {
-        if (text == null) {
-            super.price += 5;
-        }
-        this.imagePath = imagePath;
-    }
-    public String getText() {
-        return this.text;
-    }
-    public String getImagePath() {
-        return this.imagePath;
-    }
+
     public Orientation getOrientation() {
         return this.orientation;
     }
