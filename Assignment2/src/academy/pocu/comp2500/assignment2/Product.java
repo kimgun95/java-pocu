@@ -34,22 +34,22 @@ public class Product {
     public void setShippingMethod(ShippingMethod shippingMethod) {
         this.shippingMethod = shippingMethod;
     }
-    public void addText(TextAperture text) {
+    public void addTextAperture(TextAperture textAperture) {
         if (this.textAperture == null) {
             this.price += 5;
         }
-        this.textAperture = text;
+        this.textAperture = textAperture;
     }
-    public void addImage(ImageAperture imagePath) {
+    public void addImageAperture(ImageAperture imageAperture) {
         if (this.imageAperture == null) {
             this.price += 5;
         }
-        this.imageAperture = imagePath;
+        this.imageAperture = imageAperture;
     }
-    public TextAperture getText() {
+    public TextAperture getTextAperture() {
         return this.textAperture;
     }
-    public ImageAperture getImagePath() {
+    public ImageAperture getImageAperture() {
         return this.imageAperture;
     }
 }
