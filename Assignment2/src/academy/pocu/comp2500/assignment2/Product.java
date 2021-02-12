@@ -9,8 +9,8 @@ public class Product {
     protected String name;
     protected ShippingMethod shippingMethod;
 
-    private String text = "";
-    private String imagePath = "";
+    protected ImageAperture imageAperture;
+    protected TextAperture textAperture;
 
     protected Product(Size size, int price) {
         this.size = size;
@@ -34,22 +34,22 @@ public class Product {
     public void setShippingMethod(ShippingMethod shippingMethod) {
         this.shippingMethod = shippingMethod;
     }
-    public void addText(String text) {
-        if (text == null) {
+    public void addText(TextAperture text) {
+        if (this.textAperture == null) {
             this.price += 5;
         }
-        this.text = text;
+        this.textAperture = text;
     }
-    public void addImage(String imagePath) {
-        if (text == null) {
+    public void addImage(ImageAperture imagePath) {
+        if (this.imageAperture == null) {
             this.price += 5;
         }
-        this.imagePath = imagePath;
+        this.imageAperture = imagePath;
     }
-    public String getText() {
-        return this.text;
+    public TextAperture getText() {
+        return this.textAperture;
     }
-    public String getImagePath() {
-        return this.imagePath;
+    public ImageAperture getImagePath() {
+        return this.imageAperture;
     }
 }

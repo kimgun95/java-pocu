@@ -7,8 +7,11 @@ import java.util.ArrayList;
 public class Banner extends Product {
     private Orientation orientation;
 
+
     public Banner(BannerType bannerType, Size size, int price, BannerColor bannerColor, Orientation orientation) {
         super(size, price);
+        super.imageAperture = null;
+        super.textAperture = null;
         this.orientation = orientation;
         if (bannerType == BannerType.GLOSS) {
             super.name = "Gloss Banner";
