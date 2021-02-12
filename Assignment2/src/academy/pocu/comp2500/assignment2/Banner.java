@@ -9,9 +9,8 @@ public class Banner extends Product {
     private String text = new String();
     private String imagePath = new String();
 
-    public Banner(BannerType bannerType, Size size, int price, Color color, Orientation orientation) {
+    public Banner(BannerType bannerType, Size size, int price, BannerColor bannerColor, Orientation orientation) {
         super(size, price);
-        super.color = color;
         this.orientation = orientation;
         if (bannerType == BannerType.GLOSS) {
             super.name = "Gloss Banner";
@@ -19,6 +18,13 @@ public class Banner extends Product {
             super.name = "Scrim Banner";
         } else {
             super.name = "Mesh Banner";
+        }
+        if (bannerColor == BannerColor.BLACK) {
+            super.color = new Color(0x00,0x00,0x00);
+        } else if (bannerColor == BannerColor.BROWN) {
+            super.color = new Color(45, 7, 7, 237);
+        } else {
+            super.color = new Color(0xFF,0xFF,0x00);
         }
     }
     public Orientation getOrientation() {
