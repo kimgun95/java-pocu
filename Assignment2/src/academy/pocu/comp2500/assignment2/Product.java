@@ -33,16 +33,5 @@ public class Product {
     public void setShippingMethod(ShippingMethod shippingMethod) {
         this.shippingMethod = shippingMethod;
     }
-    public void addTextAperture(Aperture aperture, String textAperture) {
-        if (this.aperture.getTextAperture() == null) {
-            this.price += 5;
-        }
-        aperture.setTextAperture(textAperture);
-    }
-    public void addImageAperture(Aperture aperture, String imageAperture) {
-        if (this.aperture.getImageAperture() == null) {
-            this.price += 5;
-        }
-        aperture.setImageAperture(imageAperture);
-    }
+
 }

@@ -2,14 +2,13 @@ package academy.pocu.comp2500.assignment2;
 
 import java.awt.*;
 
-public class BusinessCard extends Product {
+public class BusinessCard extends Aperture {
     private BusinessCardSides businessCardSides;
     private Orientation orientation;
 
 
     public BusinessCard(BusinessCardType businessCardType, BusinessCardSides businessCardSides, Size size, int price, BusinessCardColor businessCardColor, Orientation orientation) {
         super(size, price);
-        super.aperture = new Aperture();
         if (businessCardColor == BusinessCardColor.GRAY) {
             super.color = new Color(0xE6, 0xE6, 0xE6);
         } else if (businessCardColor == BusinessCardColor.IVORY) {

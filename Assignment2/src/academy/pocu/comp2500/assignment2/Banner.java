@@ -4,13 +4,12 @@ import javax.print.attribute.standard.OrientationRequested;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Banner extends Product {
+public class Banner extends Aperture {
     private Orientation orientation;
 
 
     public Banner(BannerType bannerType, Size size, int price, BannerColor bannerColor, Orientation orientation) {
         super(size, price);
-        super.aperture = new Aperture();
         this.orientation = orientation;
         if (bannerType == BannerType.GLOSS) {
             super.name = "Gloss Banner";
