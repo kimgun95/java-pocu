@@ -1,83 +1,58 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashSet;
 
 public class Blog {
-    private ArrayList<Post> posts;
-    private String tag;
-    private String author;
-    private String blogId;
-    private Sorting sortingType;
+    private String title;
+    private ArrayList<Post> posts = new ArrayList<>();
+    private HashSet<String> tagFilter = new HashSet<>();
+    private ArrayList<User> authorFilter = new ArrayList<>();
+    private PostSortingType sortingType = PostSortingType.CREATEDLATE;
 
-    public Blog(String userId) {
-        this.sortingType = Sorting.CREATEDLATE;
-        this.tag = null;
-        this.author = null;
-        this.blogId = userId;
-        this.posts = new ArrayList<>();
+    public Blog(String title) {
+        this.title = title;
+    }
+    public void setTagFilter(HashSet<String> tags) {
+        this.tagFilter = tags;
+    }
+    public void setAuthorFilter(ArrayList<User> authors) {
+        this.authorFilter = authors;
+    }
+    public void setPostOrder(PostSortingType sortingType) {
+        this.sortingType = sortingType;
     }
     public void addPost(Post post) {
         this.posts.add(post);
     }
+
     public ArrayList<Post> getPostList() {
-        if (sortingType == Sorting.CREATEDFAST) {
-            Collections.sort(this.posts, (p1, p2) -> p1.getCreatedDateTime().compareTo(p2.getCreatedDateTime()));
-        } else if (sortingType == Sorting.MODIFIEDLATE) {
-            Collections.sort(this.posts, (p1, p2) -> p2.getModifiedDateTime().compareTo(p1.getModifiedDateTime()));
-        } else if (sortingType == Sorting.MODIFIEDFAST) {
-            Collections.sort(this.posts, (p1, p2) -> p1.getModifiedDateTime().compareTo(p2.getModifiedDateTime()));
-        } else if (sortingType == Sorting.POSTTITLE) {
-            Collections.sort(this.posts, (p1, p2) -> p1.getTitle().compareTo(p2.getTitle()));
-        } else {
-            Collections.sort(this.posts, (p1, p2) -> p2.getCreatedDateTime().compareTo(p1.getCreatedDateTime()));
+        ArrayList<Post> resultPosts = new ArrayList<>();
+
+        for (Post post : this.posts) {
+            if (tagFilter.size() > 0 && !post.hasTag(tagFilter)) {
+                continue;
+            }
+            if (authorFilter.size() > 0 && !post.hasAuthor(authorFilter)) {
+                continue;
+            }
+            resultPosts.add(post);
         }
 
-//        ArrayList<Post> returnPost = new ArrayList<>();
-//
-//        for (Post post : this.posts) {
-//            if (this.tag == null && this.author == null) {
-//                returnPost.add(post);
-//                // System.out.print(post.getBody() + System.lineSeparator());
-//            } else if (this.author == null) {
-//                for (String tag : post.getTags()) {
-//                    if (tag == this.tag) {
-//                        returnPost.add(post);
-//                        // System.out.print(post.getBody() + System.lineSeparator());
-//                    }
-//                }
-//            } else if (this.tag == null) {
-//                if (post.getAuthor() == this.author) {
-//                    returnPost.add(post);
-//                    // System.out.print(post.getBody() + System.lineSeparator());
-//                }
-//            } else {
-//                System.out.print("필터 쪽 에러입니다.");
-//            }
-//        }
-        return this.posts;
-    }
-    public void updatePostBody(Post post, String body, String userId) {
-        post.updatePostBody(body, userId);
-    }
-    public void updatePostTitle(Post post, String title, String userId) {
-        post.updatePostTitle(title, userId);
-    }
-    public void setPostOrder(Sorting sortingType) {
-        this.sortingType = sortingType;
-    }
-    public void setTag(String tag) {
-        if (this.author != null) {
-            this.author = null;
+        if (sortingType == PostSortingType.CREATEDFAST) {
+            Collections.sort(resultPosts, (p1, p2) -> p1.getCreatedDateTime().compareTo(p2.getCreatedDateTime()));
+        } else if (sortingType == PostSortingType.MODIFIEDLATE) {
+            Collections.sort(resultPosts, (p1, p2) -> p2.getModifiedDateTime().compareTo(p1.getModifiedDateTime()));
+        } else if (sortingType == PostSortingType.MODIFIEDFAST) {
+            Collections.sort(resultPosts, (p1, p2) -> p1.getModifiedDateTime().compareTo(p2.getModifiedDateTime()));
+        } else if (sortingType == PostSortingType.POSTTITLE) {
+            Collections.sort(resultPosts, (p1, p2) -> p1.getTitle().compareTo(p2.getTitle()));
+        } else {
+            Collections.sort(resultPosts, (p1, p2) -> p2.getCreatedDateTime().compareTo(p1.getCreatedDateTime()));
         }
-        this.tag = tag;
+
+        return resultPosts;
     }
-    public void setAuthor(String author) {
-        if (this.tag != null) {
-            this.tag = null;
-        }
-        this.author = author;
-    }
+
 }
