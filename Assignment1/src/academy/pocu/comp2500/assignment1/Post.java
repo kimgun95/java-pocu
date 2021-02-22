@@ -1,7 +1,10 @@
 package academy.pocu.comp2500.assignment1;
 
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 
 public class Post {
     private String title;
@@ -32,6 +35,9 @@ public class Post {
         updateModifiedDateTime();
         return true;
     }
+    public String getTitle() {
+        return this.title;
+    }
     public boolean setBody(User author, String body) {
         if (this.author != author) {
             return false;
@@ -47,7 +53,7 @@ public class Post {
         this.comments.add(comment);
     }
     public ArrayList<Comment> getComments() {
-        return this.comments;
+        return Comment.sortByVoteCount(this.comments);
     }
     public boolean addReaction(User user, ReactionType reactionType) {
         ArrayList<User> users = this.reactions.get(reactionType);
@@ -84,5 +90,11 @@ public class Post {
     }
     private void updateModifiedDateTime() {
         this.modifiedDateTime = OffsetDateTime.now();
+    }
+    public OffsetDateTime getCreatedDateTime() {
+        return this.createdDateTime;
+    }
+    public OffsetDateTime getModifiedDateTime() {
+        return this.modifiedDateTime;
     }
 }

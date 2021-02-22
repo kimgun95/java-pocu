@@ -12,21 +12,21 @@ public class App {
         registry.registerPostListGetter("Blog", "getPostList");
         registry.registerPostAdder("Blog", "addPost");
 
-        registry.registerPostTitleUpdater("Blog", "updatePostTitle");
-        registry.registerPostBodyUpdater("Blog", "updatePostBody");
-        registry.registerPostTagAdder("Post", "addPostTag");
+        registry.registerPostTitleUpdater("Post", "setTitle");
+        registry.registerPostBodyUpdater("Post", "setBody");
+        registry.registerPostTagAdder("Post", "addTag");
         registry.registerCommentAdder("Post", "addComment");
-        registry.registerCommentListGetter("User", "getCommentList");
-        registry.registerReactionAdder("User", "addReaction");
-        registry.registerReactionRemover("User", "removeReaction");
+        registry.registerCommentListGetter("Post", "getComments");
+        registry.registerReactionAdder("Post", "addReaction");
+        registry.registerReactionRemover("Post", "removeReaction");
 
+        registry.registerCommentUpdater("Comment", "setContent");
         registry.registerSubcommentAdder("Comment", "addSubcomment");
-        registry.registerCommentUpdater("Comment", "updateComment");
-        registry.registerSubcommentUpdater("Comment", "updateComment");
-        registry.registerCommentUpvoter("User", "commentUpvoter");
-        registry.registerCommentDownvoter("User", "commentDownvoter");
-        registry.registerSubcommentListGetter("User", "getSubCommentList");
-        registry.registerSubcommentUpvoter("User", "subCommentUpvoter");
-        registry.registerSubcommentDownvoter("User", "subCommentDownvoter");
+        registry.registerSubcommentListGetter("Comment", "getSubcomments");
+        registry.registerCommentUpvoter("Comment", "addUpVoter");
+        registry.registerCommentDownvoter("Comment", "addDownVoter");
+        registry.registerSubcommentUpdater("Comment", "setContent");
+        registry.registerSubcommentUpvoter("Comment", "addUpVoter");
+        registry.registerSubcommentDownvoter("Comment", "addDownVoter");
     }
 }

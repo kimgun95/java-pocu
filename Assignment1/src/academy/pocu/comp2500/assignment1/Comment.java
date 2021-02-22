@@ -2,64 +2,49 @@ package academy.pocu.comp2500.assignment1;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class Comment {
-    private String comment;
-    private ArrayList<Comment> subcomments;
-    private ArrayList<String> userIdUpvote;
-    private ArrayList<String> userIdDownvote;
-    private String commentId;
+    private String content;
+    private User author;
+    private ArrayList<Comment> subcomments = new ArrayList<>();
+    private ArrayList<User> userUpvote = new ArrayList<>();
+    private ArrayList<User> userDownvote = new ArrayList<>();
 
-    public Comment(String comment, String userId) {
-        this.commentId = userId;
-        this.comment = comment;
-        this.subcomments = new ArrayList<>();
-        this.userIdUpvote = new ArrayList<>();
-        this.userIdDownvote = new ArrayList<>();
+
+    public Comment(String content, User author) {
+        this.content = content;
+        this.author = author;
     }
-    // public String getComment() {
-        // return this.comment;
-    // }
-    public String getCommentId() {
-        return this.commentId;
-    }
-    public ArrayList<String> getUserIdUpvote() {
-        return this.userIdUpvote;
-    }
-    public ArrayList<String> getUserIdDownvote() {
-        return this.userIdDownvote;
-    }
-    public void addSubcomment(Comment comment) {
-        this.subcomments.add(comment);
-    }
-    public void updateComment(String text, String userId) {
-        if (this.commentId == userId) {
-            this.comment = text;
+    public boolean setContent(User author, String content) {
+        if (this.author != author) {
+            return false;
         }
+        this.content = content;
+        return true;
     }
-    public void commentUpvoter(String userId) {
-        if (this.userIdDownvote.contains(userId)) {
-            this.userIdDownvote.remove(userId);
-        }
-        if (!this.userIdUpvote.contains(userId)) {
-            this.userIdUpvote.add(userId);
-        } else {
-            this.userIdUpvote.remove(userId);
-        }
+    public void addSubcomment(Comment subComment) {
+        this.subcomments.add(subComment);
     }
-    public void commentDownvoter(String userId) {
-        if (this.userIdUpvote.contains(userId)) {
-            this.userIdUpvote.remove(userId);
-        }
-        if (!this.userIdDownvote.contains(userId)) {
-            this.userIdDownvote.add(userId);
-        } else {
-            this.userIdDownvote.remove(userId);
-        }
+    public ArrayList<Comment> getSubcomments() {
+        return sortByVoteCount(this.subcomments);
     }
-    public ArrayList<Comment> getSubCommentList() {
-        Collections.sort(this.subcomments, (c1, c2) -> (c2.getUserIdUpvote().size() - c2.getUserIdDownvote().size()) - (c1.getUserIdUpvote().size() - c1.getUserIdDownvote().size()));
-        return this.subcomments;
+    public boolean addUpVoter(User user) {
+        if (this.userUpvote.contains(user)) {
+            return false;
+        }
+        this.userUpvote.add(user);
+        return true;
+    }
+    public boolean addDownVoter(User user) {
+        if (this.userDownvote.contains(user)) {
+            return false;
+        }
+        this.userDownvote.add(user);
+        return true;
+    }
+    public static ArrayList<Comment> sortByVoteCount(ArrayList<Comment> comments) {
+        ArrayList<Comment> resultSubcomments = new ArrayList<>(comments);
+        Collections.sort(resultSubcomments, (c1, c2) -> (c2.userUpvote.size() - c2.userDownvote.size()) - (c1.userUpvote.size() - c1.userDownvote.size()));
+        return resultSubcomments;
     }
 }
