@@ -1,20 +1,23 @@
 package academy.pocu.comp2500.assignment2;
 
-import java.awt.*;
-
 public class Stamp extends Product {
     private String text;
+    private StampColor stampColor;
+    private StampSize stampSize;
 
-    public Stamp(StampType stampType, Size size, int price, String text) {
-        super(size, price);
-        if (stampType == StampType.RED) {
-            super.color = new Color(0xFF, 0x00, 0x00);
-        } else if (stampType == StampType.BLUE) {
-            super.color = new Color(0x00, 0x00, 0xFF);
-        } else {
-            super.color = new Color(0x00, 0x80, 0x00);
-        }
-        super.name = "Stamp";
+    public Stamp(StampColor stampColor, StampSize stampSize, String text, ShippingMethod shippingMethod) {
+        super("Stamp", stampColor.getColor(), stampSize.getProductSize(), stampSize.getPrice(), shippingMethod);
         this.text = text;
+        this.stampColor = stampColor;
+        this.stampSize = stampSize;
+    }
+    public String getText() {
+        return this.text;
+    }
+    public StampColor getStampColor() {
+        return this.stampColor;
+    }
+    public StampSize getStampSize() {
+        return this.stampSize;
     }
 }
