@@ -1,7 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import java.awt.*;
-
 public class Product {
     private String name;
     private Color color;
@@ -24,8 +22,11 @@ public class Product {
     public int getPrice() {
         return this.price;
     }
-    public ProductSize getSize() {
-        return this.size;
+    public int getWidth() {
+        return size.getWidth();
+    }
+    public int getHeight() {
+        return size.getHeight();
     }
     public ShippingMethod getShippingMethod() {
         return this.shippingMethod;
@@ -36,5 +37,7 @@ public class Product {
     public void setShippingMethod(ShippingMethod shippingMethod) {
         this.shippingMethod = shippingMethod;
     }
-
+    protected void setPrice(int price) {
+        this.price = price;
+    }
 }

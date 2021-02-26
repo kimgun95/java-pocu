@@ -5,7 +5,7 @@ public class ImageAperture extends Aperture {
 
     public ImageAperture(int x, int y, int width, int height, String imagepath) {
         super(x, y, width, height);
-        
+
         this.imagepath = imagepath;
     }
     public String getImagepath() {

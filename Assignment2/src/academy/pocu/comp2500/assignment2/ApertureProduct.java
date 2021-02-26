@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class ApertureProduct extends Product {
@@ -11,5 +10,24 @@ public class ApertureProduct extends Product {
         super(name, color, productSize, price, shippingMethod);
 
         this.orientation = orientation;
+    }
+
+    public boolean addAperture(Aperture aperture) {
+        if (aperture.getX() < 0 || aperture.getX() + aperture.getWidth() > super.getWidth()) {
+            return false;
+        }
+        if (aperture.getY() < 0 || aperture.getY() + aperture.getHeight() > super.getHeight()) {
+            return false;
+        }
+
+        apertures.add(aperture);
+        super.setPrice(super.getPrice() + 5);
+        return true;
+    }
+    public ArrayList<Aperture> getApertures() {
+        return apertures;
+    }
+    public Orientation getOrientation() {
+        return orientation;
     }
 }

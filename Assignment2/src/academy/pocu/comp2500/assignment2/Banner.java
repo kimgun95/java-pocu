@@ -1,7 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import java.awt.*;
-
 public class Banner extends ApertureProduct {
     private BannerType bannerType;
     private BannerSize bannerSize;

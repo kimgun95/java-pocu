@@ -1,7 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import java.awt.*;
-
 public class BusinessCard extends ApertureProduct {
     BusinessCardType businessCardType;
     BusinessCardColor businessCardColor;
