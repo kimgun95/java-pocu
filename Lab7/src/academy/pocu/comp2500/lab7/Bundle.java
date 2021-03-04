@@ -41,8 +41,7 @@ public final class Bundle {
                 || this.hashCode() != bundle.hashCode()) {
             return false;
         }
-        Bundle bun = (Bundle) bundle;
-        if (!this.name.equals(bun.name) || !this.books.equals(bun.books)) {
+        if (!this.name.equals(bundle.name) || !this.books.equals(bundle.books)) {
             return false;
         }
         return true;

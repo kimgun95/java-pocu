@@ -23,11 +23,10 @@ public final class Book {
                 || this.hashCode() != book.hashCode()) {
             return false;
         }
-        Book b1 = (Book) book;
-        if (!this.title.equals(b1.title)
-                || !this.author.equals(b1.author)
-                || this.publishedYear != b1.publishedYear
-                || this.genre != b1.genre) {
+        if (!this.title.equals(book.title)
+                || !this.author.equals(book.author)
+                || this.publishedYear != book.publishedYear
+                || this.genre != book.genre) {
             return false;
         }
         return true;

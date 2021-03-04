@@ -39,12 +39,11 @@ public final class ReadingList {
                 || this.hashCode() != readingList.hashCode()) {
             return false;
         }
-        ReadingList rl = (ReadingList) readingList;
-        if (!this.name.equals(rl.name) || this.bookList.size() != rl.bookList.size()) {
+        if (!this.name.equals(readingList.name) || this.bookList.size() != readingList.bookList.size()) {
             return false;
         }
         for (int i = 0; i < this.bookList.size(); i++) {
-            if (!this.bookList.get(i).equals(rl.bookList.get(i))) {
+            if (!this.bookList.get(i).equals(readingList.bookList.get(i))) {
                 return false;
             }
         }
