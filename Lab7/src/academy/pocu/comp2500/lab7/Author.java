@@ -19,8 +19,7 @@ public final class Author {
                 || this.hashCode() != author.hashCode()) {
             return false;
         }
-        Author a1 = (Author) author;
-        return this.firstName.equals(a1.firstName) && this.lastName.equals(a1.lastName);
+        return this.firstName.equals(author.firstName) && this.lastName.equals(author.lastName);
     }
     public int hashCode() {
         return this.firstName.hashCode() * 31 + this.lastName.hashCode();
