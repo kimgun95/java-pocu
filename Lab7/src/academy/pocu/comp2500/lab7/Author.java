@@ -8,20 +8,25 @@ public final class Author {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    @Override
     public String toString() {
         return String.format("%s %s", this.firstName, this.lastName);
     }
-    public boolean equals(Author author) {
-        if (this == author) {
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (author == null || !(author instanceof Author)
-                || this.hashCode() != author.hashCode()) {
+        if (obj == null ||
+                this.hashCode() != obj.hashCode() ||
+                !(obj instanceof Author)) {
             return false;
         }
+        Author author = (Author) obj;
         return this.firstName.equals(author.firstName) && this.lastName.equals(author.lastName);
     }
+    @Override
     public int hashCode() {
-        return this.firstName.hashCode() * 31 + this.lastName.hashCode();
+        return this.firstName.hashCode() * 17 + this.lastName.hashCode();
     }
 }

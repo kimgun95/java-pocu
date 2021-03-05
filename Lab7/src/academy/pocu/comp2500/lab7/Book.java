@@ -12,17 +12,20 @@ public final class Book {
         this.publishedYear = publishedYear;
         this.genre = genre;
     }
+    @Override
     public String toString() {
         return String.format("%s [%s]", this.title, this.author.toString());
     }
-    public boolean equals(Book book) {
-        if (this == book) {
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (book == null || !(book instanceof Book)
-                || this.hashCode() != book.hashCode()) {
+        if (obj == null || !(obj instanceof Book)
+                || this.hashCode() != obj.hashCode()) {
             return false;
         }
+        Book book = (Book) obj;
         if (!this.title.equals(book.title)
                 || !this.author.equals(book.author)
                 || this.publishedYear != book.publishedYear
@@ -31,6 +34,7 @@ public final class Book {
         }
         return true;
     }
+    @Override
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + this.title.hashCode();

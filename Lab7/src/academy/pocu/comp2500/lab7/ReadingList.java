@@ -16,12 +16,13 @@ public final class ReadingList {
         if (book == null) {
             return false;
         }
-        if (bookList.contains(book)) {
-            bookList.remove(book);
-            return true;
+        if (!bookList.contains(book)) {
+            return false;
         }
-        return false;
+        bookList.remove(book);
+        return true;
     }
+    @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
         int idx = 1;
@@ -31,14 +32,16 @@ public final class ReadingList {
         }
         return sb.toString();
     }
-    public boolean equals(ReadingList readingList) {
-        if (this == readingList) {
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (readingList == null || !(readingList instanceof ReadingList)
-                || this.hashCode() != readingList.hashCode()) {
+        if (obj == null || !(obj instanceof ReadingList)
+                || this.hashCode() != obj.hashCode()) {
             return false;
         }
+        ReadingList readingList = (ReadingList) obj;
         if (!this.name.equals(readingList.name) || this.bookList.size() != readingList.bookList.size()) {
             return false;
         }
@@ -49,6 +52,7 @@ public final class ReadingList {
         }
         return true;
     }
+    @Override
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + this.name.hashCode();

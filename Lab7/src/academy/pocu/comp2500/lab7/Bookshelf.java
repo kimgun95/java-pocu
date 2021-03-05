@@ -26,13 +26,15 @@ public final class Bookshelf {
         this.books.remove(book);
         return true;
     }
-    public boolean equals(Bookshelf bookshelf) {
-        if (this == bookshelf) {
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
         return false;
     }
+    @Override
     public int hashCode() {
-        return this.books.hashCode();
+        return 17 * this.books.hashCode();
     }
 }
