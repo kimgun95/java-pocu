@@ -33,13 +33,8 @@ public final class Bookshelf {
         }
         return false;
     }
-    @Override
-    public int hashCode() {
-        int hash = 17;
-        hash = hash * 31 + this.maxBookCount;
-        for (Book b : this.books) {
-            hash = hash * 31 + b.hashCode();
-        }
-        return hash;
-    }
+//    @Override
+//    public int hashCode() {
+//        return this.getClass().hashCode() * 31;
+//    }
 }
