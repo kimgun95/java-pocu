@@ -33,8 +33,8 @@ public final class Bookshelf {
         }
         return false;
     }
-//    @Override
-//    public int hashCode() {
-//        return this.getClass().hashCode() * 31;
-//    }
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
