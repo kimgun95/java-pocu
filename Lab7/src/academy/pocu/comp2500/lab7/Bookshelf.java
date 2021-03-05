@@ -35,6 +35,6 @@ public final class Bookshelf {
     }
     @Override
     public int hashCode() {
-        return 17 * this.books.hashCode();
+        return 17 * this.maxBookCount + this.books.hashCode();
     }
 }
