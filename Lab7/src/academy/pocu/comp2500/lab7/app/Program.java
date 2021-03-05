@@ -17,11 +17,11 @@ public class Program {
         assert (bookshelf.add(book0));
         assert (bookshelf.remove(book0));
         assert (!bookshelf.remove(book0));
-
+//
         Book book1 = new Book("C# for dummies", new Author("Jason", "Bourne"), 2005, Genre.ROMANCE);
         Book book2 = new Book("C# for dummies", new Author("Jason", "Bourne"), 2005, Genre.ROMANCE);
         Book book3 = new Book("Java for dummies", new Author("James", "Bond"), 2007, Genre.MYSTERY);
-
+//
         Bundle bundle = new Bundle("Programming");
 
         assert (bundle.add(book0));
