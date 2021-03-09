@@ -1,0 +1,3 @@
+public final class ConsoleLogger implements ILoggable{
+    ...
+}
