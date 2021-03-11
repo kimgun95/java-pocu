@@ -6,11 +6,13 @@ public abstract class SmartDevice {
     protected int tick;
     protected ArrayList<Boolean> isOnList = new ArrayList<>();
     protected int lastUpdatedTickTime;
+    protected SmartDeviceType smartDeviceType;
 
-    public SmartDevice() {
+    public SmartDevice(SmartDeviceType smartDeviceType) {
         tick = 0;
         lastUpdatedTickTime = 0;
         isOnList.add(false);
+        this.smartDeviceType = smartDeviceType;
     }
 
     public boolean isOn() {

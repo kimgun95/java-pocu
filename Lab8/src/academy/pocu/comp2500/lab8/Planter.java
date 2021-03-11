@@ -20,6 +20,26 @@ public class Planter {
     }
 
     public void tick() {
+        ArrayList<Sprinkler> sprinklers = new ArrayList<>();
+        ArrayList<Drainer> drainers = new ArrayList<>();
+        for (SmartDevice sd : smartDevices) {
+            if (sd.smartDeviceType == SmartDeviceType.SPRINKLER) {
+                Sprinkler sprinkler = (Sprinkler) sd;
+                sprinklers.add(sprinkler);
+            } else if (sd.smartDeviceType == SmartDeviceType.DRAINER) {
+                Drainer drainer = (Drainer) sd;
+                drainers.add(drainer);
+            }
+        }
 
+        for (Drainer d : drainers) {
+            d.drain(this);
+        }
+        for (Sprinkler s : sprinklers) {
+            s.spray(this);
+        }
+        if (amountOfWater >= 2) {
+            amountOfWater -= 2;
+        }
     }
 }
