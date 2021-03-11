@@ -40,6 +40,8 @@ public class Planter {
         }
         if (amountOfWater >= 2) {
             amountOfWater -= 2;
+        } else if (amountOfWater == 1) {
+            amountOfWater -= 1;
         }
     }
 }

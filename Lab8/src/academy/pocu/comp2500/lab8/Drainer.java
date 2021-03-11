@@ -17,7 +17,9 @@ public class Drainer extends SmartDevice implements IDrainable {
     public void drain(Planter planter) {
         this.onTick();
         if (planter.getWaterAmount() >= waterStandard) {
-            planter.setWaterAmount(planter.getWaterAmount() - 7);
+            if (planter.getWaterAmount() >= 7) {
+                planter.setWaterAmount(planter.getWaterAmount() - 7);
+            }
             isOnList.add(true);
             if (isOnList.get(super.tick - 1) == false) {
                 super.lastUpdatedTickTime = super.tick;

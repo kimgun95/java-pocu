@@ -1,10 +1,12 @@
 package academy.pocu.comp2500.lab8;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Sprinkler extends SmartDevice implements ISprayable {
     private ArrayList<Schedule> schedules = new ArrayList<>();
     private boolean isFinished;
+    private HashSet<Integer> badTickTime = new HashSet<>();
 
     public Sprinkler() {
         super(SmartDeviceType.SPRINKLER);
@@ -36,6 +38,10 @@ public class Sprinkler extends SmartDevice implements ISprayable {
                     tickTime + tickCount - 1 >= super.tick &&
                     super.lastUpdatedTickTime <= tickTime) {
                 if (super.lastUpdatedTickTime == super.tick) {
+                    badTickTime.add(super.tick);
+                    continue;
+                }
+                if (badTickTime.contains(tickTime)) {
                     continue;
                 }
                 isOnList.add(true);

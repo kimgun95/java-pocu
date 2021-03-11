@@ -17,6 +17,7 @@ public class Program {
         Test6();
         Test7();
         Test8();
+        Test9();
     }
     public static void Test1() {
         Sprinkler sprinkler = new Sprinkler();
@@ -269,17 +270,72 @@ public class Program {
         for (int i = 0; i < expectedIsOn.length; ++i) {
             boolean b1 = expectedIsOn[i];
             boolean b2 = sprinkler.isOn();
-            System.out.println(b1 + " " + b2 + " " + sprinkler.getTick() + " " +sprinkler.getLastUpdatedTickTime());
+//            System.out.println(b1 + " " + b2 + " " + sprinkler.getTick() + " " +sprinkler.getLastUpdatedTickTime());
             assert (b1 == b2) : i;
 
             int w1 = expectedWater[i];
             int w2 = planter.getWaterAmount();
+//            System.out.println(w1 + " " + w2 + " " +  " ");
             assert (w1 == w2) : i;
 
             int t1 = expectedTick[i];
             int t2 = sprinkler.getTicksSinceLastUpdate();
             assert (t1 == t2) : i;
 
+            planter.tick();
+        }
+    }
+    public static void Test9(){
+        Sprinkler sprinkler = new Sprinkler();
+
+        sprinkler.addSchedule(new Schedule(3, 20));
+        Drainer drainer = new Drainer(0);
+
+        Planter planter = new Planter(0);
+        planter.installSmartDevice(sprinkler);
+        planter.installSmartDevice(drainer);
+
+        int[] expectedWater = new int[]{
+                0, 0, 0, 6, 12,
+                18, 24, 30, 36, 42,
+                48, 54, 60, 66, 72,
+                78, 84, 90, 96, 102,
+                108, 114, 120, 111, 102,
+                93, 84, 75, 66, 57
+        };
+
+        int[] sprinklerTicksSinceLastUpdate = new int[]{
+                0, 1, 2, 0, 1,
+                2, 3, 4, 5, 6,
+                7, 8, 9, 10, 11,
+                12, 13, 14, 15, 16,
+                17, 18, 19, 0, 1,
+                2, 3, 4, 5, 6
+        };
+
+        int[] drainerTicksSinceLastUpdate = new int[]{
+                0, 0, 1, 2, 3,
+                4, 5, 6, 7, 8,
+                9, 10, 11, 12, 13,
+                14, 15, 16, 17, 18,
+                19, 20, 21, 22, 23,
+                24, 25, 26, 27, 28
+        };
+
+        for (int i = 0; i < expectedWater.length; ++i) {
+            int w1 = expectedWater[i];
+            int w2 = planter.getWaterAmount();
+            System.out.println(w1 + " " + w2 + " w1, w2" +  " ");
+            assert (w1 == w2) : i;
+
+            int st1 = sprinklerTicksSinceLastUpdate[i];
+            int st2 = sprinkler.getTicksSinceLastUpdate();
+            assert (st1 == st2) : i;
+
+            int dt1 = drainerTicksSinceLastUpdate[i];
+            int dt2 = drainer.getTicksSinceLastUpdate();
+            System.out.println(dt1 + " " + dt2 + " dt1, dt2 " +  " ");
+            assert (dt1 == dt2) : i;
             planter.tick();
         }
     }
