@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.lab8;
 
-public class Drainer extends SmartDevice implements IDrainable{
+public class Drainer extends SmartDevice implements IDrainable {
     private int waterStandard;
 
     public Drainer(int waterStandard) {
@@ -10,7 +10,6 @@ public class Drainer extends SmartDevice implements IDrainable{
 
     public void onTick() {
         super.tick += 1;
-
     }
 
     // Planter에 있는 물의 양을 감지하여 물이 기준 이상이면

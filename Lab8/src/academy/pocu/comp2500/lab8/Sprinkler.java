@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Sprinkler extends SmartDevice implements ISprayable {
     private ArrayList<Schedule> schedules = new ArrayList<>();
+    private boolean isFinished;
 
     public Sprinkler() {
         super(SmartDeviceType.SPRINKLER);
+        isFinished = false;
     }
 
     public void addSchedule(Schedule schedule) {
@@ -23,22 +25,32 @@ public class Sprinkler extends SmartDevice implements ISprayable {
             if (tickTime == 0) {
                 continue;
             }
+            if (tickTime > super.tick) {
+                break;
+            }
+            if (isFinished == true) {
+                super.lastUpdatedTickTime = super.tick;
+                isFinished = false;
+            }
             if (tickTime <= super.tick &&
                     tickTime + tickCount - 1 >= super.tick &&
                     super.lastUpdatedTickTime <= tickTime) {
+                if (super.lastUpdatedTickTime == super.tick) {
+                    continue;
+                }
                 isOnList.add(true);
                 check = 1;
                 if (isOnList.get(super.tick - 1) == false) {
                     super.lastUpdatedTickTime = super.tick;
+                }
+                if (super.tick == tickTime + tickCount - 1) {
+                    isFinished = true;
                 }
                 break;
             }
         }
         if (check == 0) {
             isOnList.add(false);
-            if (isOnList.get(super.tick - 1) == true) {
-                super.lastUpdatedTickTime = super.tick;
-            }
         }
     }
     // 1 틱마다 15L의 물을 Planter에 분사

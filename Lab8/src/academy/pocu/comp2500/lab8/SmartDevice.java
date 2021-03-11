@@ -14,7 +14,12 @@ public abstract class SmartDevice {
         isOnList.add(false);
         this.smartDeviceType = smartDeviceType;
     }
-
+    public int getTick() {
+        return tick;
+    }
+    public int getLastUpdatedTickTime() {
+        return lastUpdatedTickTime;
+    }
     public boolean isOn() {
         if (isOnList.get(tick) == false) {
             return false;
