@@ -1,16 +1,16 @@
 package academy.pocu.comp2500.lab8;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Planter implements IWaterDetectable {
     private int amountOfWater;
     private ArrayList<SmartDevice> smartDevices = new ArrayList<>();
-    private boolean drainerIsOn;
+    private LinkedList<Boolean> drainerOnList = new LinkedList<>();
 
 
     public Planter(int amountOfWater) {
         this.amountOfWater = amountOfWater;
-        drainerIsOn = false;
     }
     public int getWaterAmount() {
         return amountOfWater;
@@ -18,8 +18,8 @@ public class Planter implements IWaterDetectable {
     protected void setWaterAmount(int amountOfWater) {
         this.amountOfWater = amountOfWater;
     }
-    public boolean getDrainerIsOn() {
-        return drainerIsOn;
+    public Boolean getDrainerIsOn() {
+        return drainerOnList.getFirst();
     }
     public void installSmartDevice(SmartDevice smartDevice) {
         smartDevices.add(smartDevice);
@@ -40,6 +40,7 @@ public class Planter implements IWaterDetectable {
             } else if (sd.smartDeviceType == SmartDeviceType.DRAINER) {
                 Drainer drainer = (Drainer) sd;
                 drainer.drain(this);
+                drainerOnList.removeFirst();
             }
         }
         if (amountOfWater >= 2) {
@@ -50,9 +51,9 @@ public class Planter implements IWaterDetectable {
     }
     public void detect(final int waterLevel) {
         if (amountOfWater >= waterLevel) {
-            drainerIsOn = true;
+            drainerOnList.add(true);
         } else {
-            drainerIsOn = false;
+            drainerOnList.add(false);
         }
     }
 }
