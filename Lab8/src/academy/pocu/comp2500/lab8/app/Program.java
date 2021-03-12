@@ -325,7 +325,7 @@ public class Program {
         for (int i = 0; i < expectedWater.length; ++i) {
             int w1 = expectedWater[i];
             int w2 = planter.getWaterAmount();
-            System.out.println(w1 + " " + w2 + " w1, w2" +  " ");
+//            System.out.println("expectedWater:" + w1 + " waterAmount:" + w2);
             assert (w1 == w2) : i;
 
             int st1 = sprinklerTicksSinceLastUpdate[i];
@@ -334,7 +334,7 @@ public class Program {
 
             int dt1 = drainerTicksSinceLastUpdate[i];
             int dt2 = drainer.getTicksSinceLastUpdate();
-            System.out.println(dt1 + " " + dt2 + " dt1, dt2 " +  " ");
+//            System.out.println("drainerTicksSinceLastUpdate:" + dt1 + " getTicksSinceLastUpdate:" + dt2);
             assert (dt1 == dt2) : i;
             planter.tick();
         }

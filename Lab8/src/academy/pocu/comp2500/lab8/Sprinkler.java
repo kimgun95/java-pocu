@@ -58,6 +58,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
         if (check == 0) {
             isOnList.add(false);
         }
+
     }
     // 1 틱마다 15L의 물을 Planter에 분사
     public void spray(Planter planter) {
