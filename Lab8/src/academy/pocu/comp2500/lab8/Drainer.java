@@ -24,6 +24,8 @@ public class Drainer extends SmartDevice implements IDrainable, IWaterDetectable
         if (drainerOnList.getFirst() == true) {
             if (planter.getWaterAmount() >= 7) {
                 planter.setWaterAmount(planter.getWaterAmount() - 7);
+            } else if (planter.getWaterAmount() < 7) {
+                planter.setWaterAmount(0);
             }
             isOnList.add(true);
             if (isOnList.get(super.tick - 1) == false) {
