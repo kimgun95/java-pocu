@@ -66,9 +66,9 @@ public class Sprinkler extends SmartDevice implements ISprayable {
                     }
                     break;
                 }
-            // 스케줄러가 유효하지 않을 때 2
             } else if (tickTime <= super.tick &&
                     tickTime + tickCount - 1 >= super.tick) {
+                // 스케줄러가 유효하지 않을 때 2
                 break;
             }
         }
