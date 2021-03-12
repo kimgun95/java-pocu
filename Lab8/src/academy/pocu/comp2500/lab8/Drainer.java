@@ -1,13 +1,15 @@
 package academy.pocu.comp2500.lab8;
 
-public class Drainer extends SmartDevice implements IDrainable {
+import java.util.LinkedList;
+
+public class Drainer extends SmartDevice implements IDrainable, IWaterDetectable {
     private int waterStandard;
+    private LinkedList<Boolean> drainerOnList = new LinkedList<>();
 
     public Drainer(int waterStandard) {
         super(SmartDeviceType.DRAINER);
         this.waterStandard = waterStandard;
     }
-
     public int getWaterStandard() {
         return waterStandard;
     }
@@ -19,7 +21,7 @@ public class Drainer extends SmartDevice implements IDrainable {
     // 1틱마다 Planter에서 7L의 물을 배수, 물이 기준 미만이 되면 작동 중지
     public void drain(Planter planter) {
         onTick();
-        if (planter.getDrainerIsOn() == true) {
+        if (drainerOnList.getFirst() == true) {
             if (planter.getWaterAmount() >= 7) {
                 planter.setWaterAmount(planter.getWaterAmount() - 7);
             } else if (planter.getWaterAmount() < 7) {
@@ -34,6 +36,14 @@ public class Drainer extends SmartDevice implements IDrainable {
             if (isOnList.get(super.tick - 1) == true) {
                 super.lastUpdatedTickTime = super.tick;
             }
+        }
+        drainerOnList.removeFirst();
+    }
+    public void detect(final int waterLevel) {
+        if (waterStandard <= waterLevel) {
+            drainerOnList.add(true);
+        } else {
+            drainerOnList.add(false);
         }
     }
 }

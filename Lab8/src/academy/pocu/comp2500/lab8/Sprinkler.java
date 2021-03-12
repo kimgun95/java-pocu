@@ -7,12 +7,15 @@ public class Sprinkler extends SmartDevice implements ISprayable {
     private ArrayList<Schedule> schedules = new ArrayList<>();
     private boolean isFinished;
     private HashSet<Integer> badTickTime = new HashSet<>();
+    private HashSet<Integer> goodTickTime = new HashSet<>();
 
     public Sprinkler() {
         super(SmartDeviceType.SPRINKLER);
         isFinished = false;
     }
-
+    public ArrayList<Schedule> getSchedules() {
+        return schedules;
+    }
     public void addSchedule(Schedule schedule) {
         schedules.add(schedule);
     }
@@ -23,7 +26,6 @@ public class Sprinkler extends SmartDevice implements ISprayable {
         for (Schedule sch : schedules) {
             int tickTime = sch.getTickTime();
             int tickCount = sch.getTickCount();
-
             if (tickTime == 0) {
                 continue;
             }
@@ -44,14 +46,23 @@ public class Sprinkler extends SmartDevice implements ISprayable {
                 if (badTickTime.contains(tickTime)) {
                     continue;
                 }
-                isOnList.add(true);
-                check = 1;
-                if (isOnList.get(super.tick - 1) == false) {
-                    super.lastUpdatedTickTime = super.tick;
+                if (super.tick == tickTime) {
+                    goodTickTime.add(super.tick);
                 }
-                if (super.tick == tickTime + tickCount - 1) {
-                    isFinished = true;
+                if (goodTickTime.contains(tickTime)) {
+                    isOnList.add(true);
+                    check = 1;
+                    if (isOnList.get(super.tick - 1) == false) {
+                        super.lastUpdatedTickTime = super.tick;
+                    }
+                    if (super.tick == tickTime + tickCount - 1) {
+                        isFinished = true;
+                    }
+                    break;
                 }
+
+            } else if (tickTime <= super.tick &&
+                    tickTime + tickCount - 1 >= super.tick) {
                 break;
             }
         }
