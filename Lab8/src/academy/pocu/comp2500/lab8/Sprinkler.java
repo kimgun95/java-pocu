@@ -26,19 +26,24 @@ public class Sprinkler extends SmartDevice implements ISprayable {
         for (Schedule sch : schedules) {
             int tickTime = sch.getTickTime();
             int tickCount = sch.getTickCount();
+            // tickTime이 0인 스케줄은 무시
             if (tickTime == 0) {
                 continue;
             }
+            // tickTime이 현재 tick 보다 크다면 빠르게 break
             if (tickTime > super.tick) {
                 break;
             }
+            // 이전 tick에서 스케줄러가 종료됨을 알려줌. 변수 최신화
             if (isFinished == true) {
                 super.lastUpdatedTickTime = super.tick;
                 isFinished = false;
             }
+            // 스케줄러가 유효할 때
             if (tickTime <= super.tick &&
                     tickTime + tickCount - 1 >= super.tick &&
                     super.lastUpdatedTickTime <= tickTime) {
+                // 위 조건에서 유일하게 유효하지 않을 때 1
                 if (super.lastUpdatedTickTime == super.tick) {
                     badTickTime.add(super.tick);
                     continue;
@@ -46,6 +51,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
                 if (badTickTime.contains(tickTime)) {
                     continue;
                 }
+                // 스케줄러의 tickTime을 따로 저장
                 if (super.tick == tickTime) {
                     goodTickTime.add(super.tick);
                 }
@@ -60,7 +66,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
                     }
                     break;
                 }
-
+            // 스케줄러가 유효하지 않을 때 2
             } else if (tickTime <= super.tick &&
                     tickTime + tickCount - 1 >= super.tick) {
                 break;

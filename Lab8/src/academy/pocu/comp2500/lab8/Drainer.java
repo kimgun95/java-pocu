@@ -21,11 +21,9 @@ public class Drainer extends SmartDevice implements IDrainable, IWaterDetectable
     // 1틱마다 Planter에서 7L의 물을 배수, 물이 기준 미만이 되면 작동 중지
     public void drain(Planter planter) {
         onTick();
-        if (drainerOnList.getFirst() == true) {
+        if (drainerOnList.getFirst()) {
             if (planter.getWaterAmount() >= 7) {
                 planter.setWaterAmount(planter.getWaterAmount() - 7);
-            } else if (planter.getWaterAmount() < 7) {
-                planter.setWaterAmount(0);
             }
             isOnList.add(true);
             if (isOnList.get(super.tick - 1) == false) {
@@ -39,6 +37,7 @@ public class Drainer extends SmartDevice implements IDrainable, IWaterDetectable
         }
         drainerOnList.removeFirst();
     }
+    // 물의 양을 받아와 기준 선 보다 높다면 작동(true) 아니면(false)
     public void detect(final int waterLevel) {
         if (waterStandard <= waterLevel) {
             drainerOnList.add(true);

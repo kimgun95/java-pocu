@@ -26,9 +26,7 @@ public abstract class SmartDevice {
         }
         return true;
     }
-
     public abstract void onTick();
-
     public int getTicksSinceLastUpdate() {
         return tick - lastUpdatedTickTime;
     }
