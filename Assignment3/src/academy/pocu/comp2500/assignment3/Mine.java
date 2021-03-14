@@ -4,8 +4,7 @@ public class Mine extends Unit {
     private int deadCount;
 
     public Mine(IntVector2D position, int deadCount) {
-        super(position);
-        super.unitType = UnitType.MINE;
+        super(position, UnitType.MINE);
         this.deadCount = deadCount;
     }
 }

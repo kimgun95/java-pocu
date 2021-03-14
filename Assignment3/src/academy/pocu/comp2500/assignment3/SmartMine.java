@@ -5,8 +5,7 @@ public class SmartMine extends Unit {
     private int detectCount;
 
     public SmartMine(IntVector2D position, int deadCount, int detectCount) {
-        super(position);
-        super.unitType = UnitType.SMART_MINE;
+        super(position, UnitType.SMART_MINE);
         this.deadCount = deadCount;
         this.detectCount = detectCount;
     }

@@ -15,36 +15,38 @@ public abstract class Unit {
     private GroundAirType attackUnitGroundAirType;
 
 
-    public Unit(IntVector2D position) {
+    public Unit(IntVector2D position, UnitType unitType) {
         this.position = position;
+        this.unitType = unitType;
+        this.symbol = unitType.getSymbol();
+        this.hp = unitType.getHp();
+        
     }
     public IntVector2D getPosition() {
         return position;
     }
 
     public int getHp() {
-        return hp ;
+        return hp;
     }
 
     public AttackIntent attack() {
         return attackIntent;
-    };
+    }
 
     public void onAttacked(int damage) {
         hp -= damage;
-    };
+    }
 
     public void onSpawn() {
-        this.symbol = unitType.getSymbol();
-        this.hp = unitType.getHp();
         this.vision = unitType.getVision();
         this.areaOfEffect = unitType.getAoe();
         this.ap = unitType.getAp();
         this.groundAirType = unitType.getGroundAirType();
         this.attackUnitGroundAirType = unitType.getAttackUnitGroundAirType();
-    };
+    }
 
     public char getSymbol() {
         return symbol;
-    };
+    }
 }
