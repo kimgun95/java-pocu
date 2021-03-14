@@ -2,7 +2,7 @@ package academy.pocu.comp2500.assignment3;
 
 import java.util.ArrayList;
 
-public abstract class Unit implements IThinkable, IMovable{
+public abstract class Unit implements IThinkable, IMovable {
     private IntVector2D position;
     private AttackIntent attackIntent;
     protected UnitType unitType;
