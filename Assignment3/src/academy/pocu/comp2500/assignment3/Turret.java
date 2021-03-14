@@ -5,4 +5,13 @@ public class Turret extends Unit {
     public Turret(IntVector2D position) {
         super(position, UnitType.TURRET);
     }
+    @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void think() {
+
+    }
 }

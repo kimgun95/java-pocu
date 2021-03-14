@@ -23,11 +23,11 @@ public class SimulationManager {
     }
     // 매개변수 자료형 변경 가능
     public void registerThinkable(Unit thinkable) {
-
+        thinkable.think();
     }
     // 매개변수 자료형 변경 가능
     public void registerMovable(Unit movable) {
-
+        movable.move();
     }
     // 매개변수 자료형 변경 가능
     public void registerCollisionEventListener(Unit listener) {

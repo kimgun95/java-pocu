@@ -5,4 +5,13 @@ public class Destroyer extends Unit {
     public Destroyer(IntVector2D position) {
         super(position, UnitType.DESTROYER);
     }
+    @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void think() {
+
+    }
 }

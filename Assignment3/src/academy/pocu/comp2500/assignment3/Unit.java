@@ -2,7 +2,7 @@ package academy.pocu.comp2500.assignment3;
 
 import java.util.ArrayList;
 
-public abstract class Unit {
+public abstract class Unit implements IThinkable, IMovable{
     private IntVector2D position;
     private AttackIntent attackIntent;
     protected UnitType unitType;
@@ -20,7 +20,7 @@ public abstract class Unit {
         this.unitType = unitType;
         this.symbol = unitType.getSymbol();
         this.hp = unitType.getHp();
-        
+
     }
     public IntVector2D getPosition() {
         return position;
@@ -49,4 +49,10 @@ public abstract class Unit {
     public char getSymbol() {
         return symbol;
     }
+
+    @Override
+    public abstract void move();
+
+    @Override
+    public abstract void think();
 }

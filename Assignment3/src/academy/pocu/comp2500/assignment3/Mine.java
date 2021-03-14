@@ -7,4 +7,13 @@ public class Mine extends Unit {
         super(position, UnitType.MINE);
         this.deadCount = deadCount;
     }
+    @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void think() {
+
+    }
 }

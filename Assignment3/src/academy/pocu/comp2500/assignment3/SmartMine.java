@@ -9,4 +9,13 @@ public class SmartMine extends Unit {
         this.deadCount = deadCount;
         this.detectCount = detectCount;
     }
+    @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void think() {
+
+    }
 }

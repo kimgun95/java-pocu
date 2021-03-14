@@ -5,4 +5,13 @@ public class Marine extends Unit {
     public Marine(IntVector2D position) {
         super(position, UnitType.MARINE);
     }
+    @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void think() {
+
+    }
 }
