@@ -1,9 +1,14 @@
-public class Robot implements Cloneable{
-    private Head head = new Head();
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+public final class Robot {
+    private Head head;
+    private int hp;
+    public Robot(int hp, Head head) {
+        this.hp = hp;
+        this.head = head;
+    }
+    public Head getHead() {
+        return head;
+    }
+    public void setHead(Head head) {
+        this.head = head;
     }
 }
-
-Robot robot = new Robot();
-Robot savePoint = (Robot) robot.clone();
