@@ -1,9 +1,8 @@
 package academy.pocu.comp2500.lab9;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
-public final class Cart {
+public abstract class Cart {
     private ArrayList<Book> books = new ArrayList<>();
 
     public Book getBookOrNull(int index) {
@@ -37,17 +36,5 @@ public final class Cart {
 
         return true;
     }
-
-    public int getTotalPrice(SimplePricing simplePricing) {
-        return simplePricing.getTotalPrice(books);
-    }
-    public int getTotalPrice(BuyOneGetOneFree buyOneGetOneFree) {
-        return buyOneGetOneFree.getTotalPrice(books);
-    }
-    public int getTotalPrice(DecadeMadness decadeMadness) {
-        return decadeMadness.getTotalPrice(books);
-    }
-    public int getTotalPrice(SkyIsTheLimit skyIsTheLimit) {
-        return skyIsTheLimit.getTotalPrice(books);
-    }
+    public abstract int getTotalPrice(ArrayList<Book> books);
 }

@@ -3,7 +3,7 @@ package academy.pocu.comp2500.lab9;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public final class DecadeMadness {
+public final class DecadeMadness extends Cart {
     private HashMap<Integer, Integer> eventListAndCount = new HashMap<>();
 
     public DecadeMadness() {
