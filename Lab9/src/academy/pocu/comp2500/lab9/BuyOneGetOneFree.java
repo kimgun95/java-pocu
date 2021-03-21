@@ -8,7 +8,6 @@ import java.util.UUID;
 public final class BuyOneGetOneFree {
     private HashSet<UUID> skus;
     private HashMap<UUID, Integer> eventListAndCount = new HashMap<>();
-    private HashMap<UUID, Integer> eventListPrice = new HashMap<>();
 
     public BuyOneGetOneFree(HashSet<UUID> skus) {
         this.skus = skus;
@@ -25,18 +24,12 @@ public final class BuyOneGetOneFree {
                     eventListAndCount.put(bSku, value + 1);
                 }
             }
-            totalPrice += b.getPrice();
-        }
-        double freePrice = 0;
-        for (UUID sku : eventListAndCount.keySet()) {
-            for (Book b : books) {
-                if (sku == b.getSku()) {
-                    eventListPrice.put(sku, b.getPrice());
-                    break;
-                }
+            if (skus.contains(bSku) && eventListAndCount.get(bSku) % 2 == 0) {
+                totalPrice += 0;
+            } else {
+                totalPrice += b.getPrice();
             }
-            freePrice += (double) eventListPrice.get(sku) * (double) (eventListAndCount.get(sku) / 2);
         }
-        return (int) ((double) totalPrice - freePrice);
+        return totalPrice;
     }
 }
