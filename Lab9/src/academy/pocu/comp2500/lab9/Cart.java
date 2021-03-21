@@ -2,7 +2,7 @@ package academy.pocu.comp2500.lab9;
 
 import java.util.ArrayList;
 
-public abstract class Cart {
+public final class Cart {
     private ArrayList<Book> books = new ArrayList<>();
 
     public Book getBookOrNull(int index) {
