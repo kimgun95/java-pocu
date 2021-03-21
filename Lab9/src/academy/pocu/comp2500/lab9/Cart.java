@@ -37,13 +37,8 @@ public final class Cart {
         return true;
     }
     public int getTotalPrice() {
-        int sum = 0;
-
-        for (Book book : this.books) {
-            sum += book.getPrice();
-        }
-
-        return sum;
+        SimplePricing simplePricing = new SimplePricing();
+        return this.getTotalPrice(simplePricing);
     }
     public int getTotalPrice(SimplePricing simplePricing) {
         return simplePricing.getTotalPrice(books);
