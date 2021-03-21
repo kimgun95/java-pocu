@@ -36,16 +36,7 @@ public final class Cart {
 
         return true;
     }
-    public int getTotalPrice(SimplePricing simplePricing) {
-        return simplePricing.getTotalPrice(books);
-    }
-    public int getTotalPrice(BuyOneGetOneFree buyOneGetOneFree) {
-        return buyOneGetOneFree.getTotalPrice(books);
-    }
-    public int getTotalPrice(DecadeMadness decadeMadness) {
-        return decadeMadness.getTotalPrice(books);
-    }
-    public int getTotalPrice(SkyIsTheLimit skyIsTheLimit) {
-        return skyIsTheLimit.getTotalPrice(books);
+    public int getTotalPrice(PricePolicy pricePolicy) {
+        return pricePolicy.getTotalPrice(books);
     }
 }
