@@ -14,7 +14,7 @@ public final class DecadeMadness {
         for (Book b : books) {
             int year = b.getPublishedYear() / 10;
             if (!eventListAndCount.containsKey(year)) {
-                eventListAndCount.put(year ,1);
+                eventListAndCount.put(year, 1);
             } else {
                 int value = eventListAndCount.get(year);
                 eventListAndCount.put(year, value + 1);

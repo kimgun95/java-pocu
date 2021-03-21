@@ -35,7 +35,7 @@ public final class BuyOneGetOneFree {
                     break;
                 }
             }
-           freePrice += eventListPrice.get(sku) * (eventListAndCount.get(sku) / 2);
+            freePrice += eventListPrice.get(sku) * (eventListAndCount.get(sku) / 2);
         }
         return totalPrice - freePrice;
     }
