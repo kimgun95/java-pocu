@@ -3,7 +3,7 @@ package academy.pocu.comp2500.lab9;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public final class SkyIsTheLimit extends Cart {
+public final class SkyIsTheLimit {
     private int price;
 
     public SkyIsTheLimit(int price) {
