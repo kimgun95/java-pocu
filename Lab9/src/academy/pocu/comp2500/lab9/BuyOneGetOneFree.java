@@ -27,7 +27,7 @@ public final class BuyOneGetOneFree {
             }
             totalPrice += b.getPrice();
         }
-        int freePrice = 0;
+        double freePrice = 0;
         for (UUID sku : eventListAndCount.keySet()) {
             for (Book b : books) {
                 if (sku == b.getSku()) {
@@ -35,8 +35,8 @@ public final class BuyOneGetOneFree {
                     break;
                 }
             }
-            freePrice += eventListPrice.get(sku) * (eventListAndCount.get(sku) / 2);
+            freePrice += (double) eventListPrice.get(sku) * (double) (eventListAndCount.get(sku) / 2);
         }
-        return totalPrice - freePrice;
+        return (int) ((double) totalPrice - freePrice);
     }
 }
