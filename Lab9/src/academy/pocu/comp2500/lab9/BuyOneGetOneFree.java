@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.UUID;
 
-public final class BuyOneGetOneFree {
+public final class BuyOneGetOneFree extends PricePolicy {
     private HashSet<UUID> skus;
     private HashMap<UUID, Integer> eventListAndCount = new HashMap<>();
 
