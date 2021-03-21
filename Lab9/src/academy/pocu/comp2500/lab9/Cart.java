@@ -38,9 +38,6 @@ public final class Cart {
     }
     public int getTotalPrice() {
         SimplePricing simplePricing = new SimplePricing();
-        return this.getTotalPrice(simplePricing);
-    }
-    public int getTotalPrice(SimplePricing simplePricing) {
         return simplePricing.getTotalPrice(books);
     }
     public int getTotalPrice(BuyOneGetOneFree buyOneGetOneFree) {
