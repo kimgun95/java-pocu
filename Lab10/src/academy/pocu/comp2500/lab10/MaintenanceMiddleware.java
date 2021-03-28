@@ -22,7 +22,7 @@ public final class MaintenanceMiddleware implements IRequestHandler {
             return new ServiceUnavailableResult(startTime, startTime.plusHours(1));
         }
         for (Movie movie : movieStore.getMovies()) {
-            if (movie.getTitle() == request.getTitle()) {
+            if (movie.getTitle().equals(request.getTitle())) {
                 return new OkResult(movie);
             }
         }
