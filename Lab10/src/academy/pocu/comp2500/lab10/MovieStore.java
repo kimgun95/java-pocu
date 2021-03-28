@@ -12,6 +12,9 @@ public final class MovieStore implements IRequestHandler {
     public MovieStore() {
         movies = new ArrayList<>();
     }
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
     public void add(Movie movie) {
         movies.add(movie);
     }
