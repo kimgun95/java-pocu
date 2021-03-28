@@ -30,7 +30,7 @@ public final class MovieStore implements IRequestHandler {
     @Override
     public ResultBase handle(Request request) {
         for (Movie movie : movies) {
-            if (movie.getTitle() == request.getTitle()) {
+            if (movie.getTitle().equals(request.getTitle())) {
                 return new OkResult(movie);
             }
         }
