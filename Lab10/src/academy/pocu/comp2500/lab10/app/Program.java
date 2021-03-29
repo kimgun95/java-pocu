@@ -14,9 +14,9 @@ public class Program {
 	    // write your code here
 
         Test1();
-//        Test2();
+        Test2();
         Test3();
-//        Test4();
+        Test4();
         Test5();
     }
     public static void Test1() {

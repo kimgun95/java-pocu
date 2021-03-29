@@ -1,19 +1,16 @@
 package academy.pocu.comp2500.lab10;
 
-import academy.pocu.comp2500.lab10.pocuflix.Movie;
-import academy.pocu.comp2500.lab10.pocuflix.OkResult;
 import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 import academy.pocu.comp2500.lab10.pocuflix.User;
-import academy.pocu.comp2500.lab10.pocuflix.NotFoundResult;
 
 import java.util.HashSet;
 
 public final class AuthorizationMiddleware implements IRequestHandler {
-    private MovieStore movieStore;
+    private IRequestHandler handler;
     private HashSet<User> users;
 
-    public AuthorizationMiddleware(MovieStore movieStore, HashSet<User> users) {
-        this.movieStore = movieStore;
+    public AuthorizationMiddleware(IRequestHandler handler, HashSet<User> users) {
+        this.handler = handler;
         this.users = users;
     }
 
@@ -22,11 +19,6 @@ public final class AuthorizationMiddleware implements IRequestHandler {
         if (!users.contains(request.getUser())) {
             return new UnauthorizedResult();
         }
-        for (Movie movie : movieStore.getMovies()) {
-            if (movie.getTitle() == request.getTitle()) {
-                return new OkResult(movie);
-            }
-        }
-        return new NotFoundResult();
+        return handler.handle(request);
     }
 }
