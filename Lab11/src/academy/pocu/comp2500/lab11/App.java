@@ -29,7 +29,7 @@ public final class App {
         System.out.println("WAREHOUSE: Choose your warehouse!");
         int idx = 1;
         for (WarehouseType type : WarehouseType.values()) {
-            System.out.println(idx + ". " + type);
+            System.out.println(idx + "." + type);
             idx += 1;
         }
     }
