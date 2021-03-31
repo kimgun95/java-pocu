@@ -12,10 +12,10 @@ public final class SafeWallet extends Wallet {
         if (amount <= 0) {
             return false;
         }
-
+        int walletAmount = this.getAmount();
         try {
-            super.amount += amount;
-            if (super.amount <= 0) {
+            walletAmount += amount;
+            if (walletAmount <= 0) {
                 throw new OverflowException("amount is overflow!!!");
             }
         } catch (Exception e) {

@@ -3,7 +3,7 @@ package academy.pocu.comp2500.lab11.pocu;
 import java.util.HashSet;
 
 public class Wallet {
-    protected int amount;
+    private int amount;
 
     public Wallet(final User user) throws IllegalAccessException {
         if (user == null) {
