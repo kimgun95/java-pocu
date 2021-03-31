@@ -22,7 +22,7 @@ public final class App {
             }
         }
     }
-    private static void printWarehouse() {
+    private static final void printWarehouse() {
         System.out.println("WAREHOUSE: Choose your warehouse!");
         int idx = 1;
         for (WarehouseType type : WarehouseType.values()) {
@@ -30,7 +30,7 @@ public final class App {
             idx += 1;
         }
     }
-    private static Boolean selectWarehouse(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
+    private static final Boolean selectWarehouse(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         String inputValue = in.readLine();
 
         if (inputValue.equals("exit")) {
@@ -55,12 +55,17 @@ public final class App {
         }
 
     }
-    private static Boolean showWallet(BufferedReader in, PrintStream out, PrintStream err, WarehouseType type) {
+    private static final Boolean showWallet(BufferedReader in, PrintStream out, PrintStream err, WarehouseType type) {
         User user = new User();
+        Warehouse warehouse = new Warehouse(type);
         try {
-            Wallet wallet = new Wallet(user);
-            System.out.println("BALANCE: " + wallet.getAmount());
-            return showProductList(in, out, err, type);
+            SafeWallet wallet = new SafeWallet(user);
+            while (true) {
+                System.out.println("BALANCE: " + wallet.getAmount());
+                if (showProductList(in, out, err, warehouse, wallet) == true) {
+                    return true;
+                }
+            }
         } catch (IllegalAccessException e) {
             err.println("AUTH_ERROR");
             return true;
@@ -68,14 +73,48 @@ public final class App {
             return false;
         }
     }
-    private static Boolean showProductList(BufferedReader in, PrintStream out, PrintStream err, WarehouseType warehouseType) {
+    private static final Boolean showProductList(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet) throws IOException {
         System.out.println("PRODUCT_LIST: Choose the product you want to buy!");
-        Warehouse warehouse = new Warehouse(warehouseType);
         int idx = 1;
         for (Product p : warehouse.getProducts()) {
-            System.out.printf("%d. %s %-6d", idx, p.getName(), p.getPrice());
+            System.out.printf("%d. %-10s %10d%s", idx, p.getName(), p.getPrice(), System.lineSeparator());
             idx += 1;
         }
-        return true;
+        return selectProductList(in, out, err, warehouse, wallet);
+    }
+    private static final boolean selectProductList(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet) throws IOException {
+        String inputValue = in.readLine();
+
+        if (inputValue.equals("exit")) {
+            return true;
+        }
+        try {
+            int inputIntValue = Integer.parseInt(inputValue);
+            if (inputIntValue >= 1 && inputIntValue <= warehouse.getProducts().size()) {
+                int idx = 1;
+                for (Product product : warehouse.getProducts()) {
+                    if (inputIntValue == idx) {
+                        System.out.println("asasasas");
+                        return buyProduct(in, out, err, warehouse, wallet, product);
+                    }
+                    idx += 1;
+                }
+                return false;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    private static final boolean buyProduct(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet, Product product) {
+        for (Product p : warehouse.getProducts()) {
+            if (product.getId() == p.getId()) {
+                wallet.withdraw(p.getPrice());
+                warehouse.removeProduct(p.getId());
+                return false;
+            }
+        }
+        return false;
     }
 }
