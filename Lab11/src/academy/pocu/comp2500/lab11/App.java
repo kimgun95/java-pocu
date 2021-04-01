@@ -15,7 +15,7 @@ public final class App {
     }
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         while (true) {
-            printWarehouse();
+            printWarehouse(out);
 
             if (selectWarehouse(in, out, err) == true) {
                 in.close();
@@ -25,11 +25,11 @@ public final class App {
             }
         }
     }
-    private static final void printWarehouse() {
-        System.out.println("WAREHOUSE: Choose your warehouse!");
+    private static final void printWarehouse(PrintStream out) {
+        out.println("WAREHOUSE: Choose your warehouse!");
         int idx = 1;
         for (WarehouseType type : WarehouseType.values()) {
-            System.out.println(idx + "." + type);
+            out.println(idx + ". " + type);
             idx += 1;
         }
     }
@@ -64,7 +64,7 @@ public final class App {
         try {
             SafeWallet wallet = new SafeWallet(user);
             while (true) {
-                System.out.println("BALANCE: " + wallet.getAmount());
+                out.println("BALANCE: " + wallet.getAmount());
                 if (showProductList(in, out, err, warehouse, wallet) == true) {
                     return true;
                 }
@@ -77,10 +77,10 @@ public final class App {
         }
     }
     private static final Boolean showProductList(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet) throws IOException {
-        System.out.println("PRODUCT_LIST: Choose the product you want to buy!");
+        out.println("PRODUCT_LIST: Choose the product you want to buy!");
         int idx = 1;
         for (Product p : warehouse.getProducts()) {
-            System.out.printf("%d. %-10s %10d%s", idx, p.getName(), p.getPrice(), System.lineSeparator());
+            out.printf("%d. %-10s %10d%s", idx, p.getName(), p.getPrice(), System.lineSeparator());
             idx += 1;
         }
         return selectProductList(in, out, err, warehouse, wallet);
@@ -97,7 +97,6 @@ public final class App {
                 int idx = 1;
                 for (Product product : warehouse.getProducts()) {
                     if (inputIntValue == idx) {
-                        System.out.println("asasasas");
                         return buyProduct(in, out, err, warehouse, wallet, product);
                     }
                     idx += 1;
