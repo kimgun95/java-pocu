@@ -65,7 +65,7 @@ public final class App {
         try {
             warehouse = new Warehouse(type);
         } catch (PermanentlyClosedException e) {
-            return true;
+            throw e;
         } catch (Exception e) {
             return false;
         }
