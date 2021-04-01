@@ -1,9 +1,6 @@
 package academy.pocu.comp2500.lab11;
 
-import academy.pocu.comp2500.lab11.pocu.Product;
-import academy.pocu.comp2500.lab11.pocu.User;
-import academy.pocu.comp2500.lab11.pocu.Warehouse;
-import academy.pocu.comp2500.lab11.pocu.WarehouseType;
+import academy.pocu.comp2500.lab11.pocu.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -63,6 +60,8 @@ public final class App {
         Warehouse warehouse;
         try {
             warehouse = new Warehouse(type);
+        } catch (PermanentlyClosedException e) {
+            return true;
         } catch (Exception e) {
             return false;
         }
