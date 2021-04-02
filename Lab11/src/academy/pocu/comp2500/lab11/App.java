@@ -5,6 +5,7 @@ import academy.pocu.comp2500.lab11.pocu.Warehouse;
 import academy.pocu.comp2500.lab11.pocu.WarehouseType;
 import academy.pocu.comp2500.lab11.pocu.Product;
 import academy.pocu.comp2500.lab11.pocu.ProductNotFoundException;
+import academy.pocu.comp2500.lab11.pocu.Wallet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -68,7 +69,7 @@ public final class App {
             return false;
         }
         try {
-            SafeWallet wallet = new SafeWallet(user);
+            Wallet wallet = new Wallet(user);
             while (true) {
                 out.println("BALANCE: " + wallet.getAmount());
                 if (showProductList(in, out, err, warehouse, wallet) == true) {
@@ -82,7 +83,7 @@ public final class App {
             return false;
         }
     }
-    private static final Boolean showProductList(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet) throws IOException {
+    private static final Boolean showProductList(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, Wallet wallet) throws IOException {
         out.println("PRODUCT_LIST: Choose the product you want to buy!");
         int idx = 1;
         for (Product p : warehouse.getProducts()) {
@@ -91,7 +92,7 @@ public final class App {
         }
         return selectProductList(in, out, err, warehouse, wallet);
     }
-    private static final boolean selectProductList(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet) throws IOException {
+    private static final boolean selectProductList(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, Wallet wallet) throws IOException {
         String inputValue = in.readLine();
 
         if (inputValue.equals("exit")) {
@@ -115,14 +116,15 @@ public final class App {
             return false;
         }
     }
-    private static final boolean buyProduct(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet, Product product) {
+    private static final boolean buyProduct(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, Wallet wallet, Product product) {
         for (Product p : warehouse.getProducts()) {
             if (product.getId() == p.getId()) {
-                if (wallet.withdraw(p.getPrice()) == true) {
+                int price = p.getPrice();
+                if (wallet.withdraw(price) == true) {
                     try {
                         warehouse.removeProduct(p.getId());
                     } catch (ProductNotFoundException e) {
-                        wallet.deposit(p.getPrice());
+                        wallet.deposit(price);
                     }
                 }
             }

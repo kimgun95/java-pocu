@@ -18,8 +18,8 @@ public final class SafeWallet extends Wallet {
             if (walletAmount <= 0) {
                 throw new OverflowException("amount is overflow!!!");
             }
-        } catch (Exception e) {
-
+        } catch (OverflowException e) {
+            return false;
         }
         return true;
     }
