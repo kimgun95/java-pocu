@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.lab11;
 
-import academy.pocu.comp2500.lab11.pocu.PermanentlyClosedException;
 import academy.pocu.comp2500.lab11.pocu.User;
 import academy.pocu.comp2500.lab11.pocu.Warehouse;
 import academy.pocu.comp2500.lab11.pocu.WarehouseType;
@@ -54,7 +53,7 @@ public final class App {
             } else {
                 return false;
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             return false;
         }
 
