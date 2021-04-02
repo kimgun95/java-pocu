@@ -61,9 +61,13 @@ public final class App {
     }
     private static final Boolean showWallet(BufferedReader in, PrintStream out, PrintStream err, WarehouseType type) {
         User user = new User();
-        Warehouse warehouse = new Warehouse(type);
+        Warehouse warehouse;
         try {
-
+            warehouse = new Warehouse(type);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        try {
             SafeWallet wallet = new SafeWallet(user);
             while (true) {
                 out.println("BALANCE: " + wallet.getAmount());
