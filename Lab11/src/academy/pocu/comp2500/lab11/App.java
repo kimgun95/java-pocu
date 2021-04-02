@@ -4,6 +4,7 @@ import academy.pocu.comp2500.lab11.pocu.User;
 import academy.pocu.comp2500.lab11.pocu.Warehouse;
 import academy.pocu.comp2500.lab11.pocu.WarehouseType;
 import academy.pocu.comp2500.lab11.pocu.Product;
+import academy.pocu.comp2500.lab11.pocu.ProductNotFoundException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -118,7 +119,13 @@ public final class App {
         for (Product p : warehouse.getProducts()) {
             if (product.getId() == p.getId()) {
                 if (wallet.withdraw(p.getPrice()) == true) {
-                    warehouse.removeProduct(p.getId());
+                    try {
+                        warehouse.removeProduct(p.getId());
+                        return false;
+                    } catch (ProductNotFoundException e) {
+                        return false;
+                    }
+
                 }
                 return false;
             }
