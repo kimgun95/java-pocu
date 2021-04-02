@@ -121,9 +121,8 @@ public final class App {
                 if (wallet.withdraw(p.getPrice()) == true) {
                     try {
                         warehouse.removeProduct(p.getId());
-                        return false;
                     } catch (ProductNotFoundException e) {
-                        return false;
+                        wallet.deposit(p.getPrice());
                     }
 
                 }
