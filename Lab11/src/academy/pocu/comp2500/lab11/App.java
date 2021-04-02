@@ -124,9 +124,7 @@ public final class App {
                     } catch (ProductNotFoundException e) {
                         wallet.deposit(p.getPrice());
                     }
-
                 }
-                return false;
             }
         }
         return false;
