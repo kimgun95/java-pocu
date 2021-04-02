@@ -117,8 +117,9 @@ public final class App {
     private static final boolean buyProduct(BufferedReader in, PrintStream out, PrintStream err, Warehouse warehouse, SafeWallet wallet, Product product) {
         for (Product p : warehouse.getProducts()) {
             if (product.getId() == p.getId()) {
-                wallet.withdraw(p.getPrice());
-                warehouse.removeProduct(p.getId());
+                if (wallet.withdraw(p.getPrice()) == true) {
+                    warehouse.removeProduct(p.getId());
+                }
                 return false;
             }
         }
