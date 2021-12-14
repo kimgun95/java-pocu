@@ -4,8 +4,21 @@ Java를 통해 OOP(개체지향 프로그래밍)에 대해 공부하고 이해�
 
 ---
 ## 정리
+💻 Java 끄적끄적
+  - 실습을 하면서 에러가 발생하거나 오래 막혔던 부분들에 대해 글로 정리했습니다.
+  1. [redundant, assert](https://blog.naver.com/harrison1995/222206425174)
+  2. [print, ArrayList, StringBuilder](https://blog.naver.com/harrison1995/222211731479)
+  3. [OffsetDateTime](https://blog.naver.com/harrison1995/222214262650)
+  4. [enum, 카멜 표기법, Comparator](https://blog.naver.com/harrison1995/222218116228)
+  5. [multiton, Map, LinkedList, LinkedHashSet](https://blog.naver.com/harrison1995/222224840887)
+  6. [Casting(형변환), ArrayList.remove](https://blog.naver.com/harrison1995/222230787998)
+  7. [HashSet, HashMap, continue 문](https://blog.naver.com/harrison1995/222253121144)
+  8. [Enum Class](https://blog.naver.com/harrison1995/222259175363)
+  9. [Break Point, Overriding, Overloading, @Override(Java Annotation)](https://blog.naver.com/harrison1995/222265598589)
+  10. [인터페이스 이해, equals() 활용](https://blog.naver.com/harrison1995/222291963299)
+  11. [BufferedReader, NumberFormatException, PrintStream, printf 정렬](https://blog.naver.com/harrison1995/222294472307)
 
-POCU 아카데미 강의를 듣고 이해한 내용들을 글로 정리했습니다.
+📚 POCU 아카데미 강의를 듣고 이해한 내용들을 글로 정리했습니다.
 
 0️⃣ Java 언어의 기본 문법
   - [패키지, 빌드, 실행](https://blog.naver.com/harrison1995/222196494366)
