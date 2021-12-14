@@ -1,9 +1,9 @@
 # 개체지향 프로그래밍 및 설계(Java)
 
-Java를 통해 OOP(개체지향 프로그래밍)에 대해 공부하고 이해를 한것을 정리 및 실습한 공간입니다.
+Java를 통해 OOP(개체지향 프로그래밍)에 대해 공부하고 이해한 것을 정리 및 실습한 공간입니다.
 
 ---
-## 정리
+## 실습 시행착오
 💻 Java 끄적끄적
   - 실습을 하면서 에러가 발생하거나 오래 막혔던 부분들에 대해 글로 정리했습니다.
   1. [redundant, assert](https://blog.naver.com/harrison1995/222206425174)
@@ -18,7 +18,9 @@ Java를 통해 OOP(개체지향 프로그래밍)에 대해 공부하고 이해�
   10. [인터페이스 이해, equals() 활용](https://blog.naver.com/harrison1995/222291963299)
   11. [BufferedReader, NumberFormatException, PrintStream, printf 정렬](https://blog.naver.com/harrison1995/222294472307)
 
-📚 POCU 아카데미 강의를 듣고 이해한 내용들을 글로 정리했습니다.
+---
+## 강의 정리
+📚 POCU 아카데미 강의를 통해 얻은 지식을 글로 정리했습니다.
 
 0️⃣ Java 언어의 기본 문법
   - [패키지, 빌드, 실행](https://blog.naver.com/harrison1995/222196494366)
